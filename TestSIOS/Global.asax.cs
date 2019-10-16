@@ -15,6 +15,7 @@ namespace TestSIOS
         {
             // Code that runs on application startup
             // komentarz
+            // komentarz 2
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

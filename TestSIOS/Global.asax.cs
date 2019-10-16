@@ -14,8 +14,6 @@ namespace TestSIOS
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
-            // komentarz
-            // komentarz 2
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

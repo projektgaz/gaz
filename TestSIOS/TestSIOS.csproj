@@ -213,7 +213,12 @@
     </Content>
     <Content Include="images\naukowe.jpg" />
     <Content Include="images\wojsko.jpg" />
+    <None Include="Properties\PublishProfiles\gaz - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\gaz - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\gaz - Web Deploy %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\gaz - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\projekty - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\projekty - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="images\impreza.jpg" />
     <Content Include="index.html" />

@@ -1,0 +1,42 @@
+﻿@model G.A.Z.SIOS.Models.IndexViewModel
+@{
+    ViewBag.Title = "Zarządzaj";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Zmień ustawienia konta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Hasło:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Zmień hasło", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Utwórz", "SetPassword")
+            }
+            ]
+        </dd>
+        <dt>Punkty lojalnościowe:</dt>
+        <dd>
+            <p class="text-info">
+                Punkty lojalościowe otrzymuje się za wzięcie udziału w wydarzeniu i przesyłaniu opini. Zdobyte punkty lojalnościowe możesz wymienić na nagrody.
+            </p>
+            <p>
+                Nie posiadasz żadnych punktów lojalnościowych.
+            </p>
+        </dd>
+        <dt>Twoje punkty lojalnościowe:</dt>
+        <dd>
+            <p>
+                Nie posiadasz żadnych punktów lojalnościowych.
+            </p>
+        </dd>
+    </dl>
+</div>

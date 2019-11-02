@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using G.A.Z.SIOS.Models;
+using System.Text;
 
 namespace G.A.Z.SIOS.Controllers
 {
@@ -75,19 +76,36 @@ namespace G.A.Z.SIOS.Controllers
 
             // Nie powoduje to liczenia niepowodzeń logowania w celu zablokowania konta
             // Aby włączyć wyzwalanie blokady konta po określonej liczbie niepomyślnych prób wprowadzenia hasła, zmień ustawienie na shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            var user = await UserManager.FindAsync(model.Email, model.Password);
+            if (user != null)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Nieprawidłowa próba logowania.");
+                if (user.EmailConfirmed == true)
+                {
+                    var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+                    switch (result)
+                    {
+                        case SignInStatus.Success:
+                            return RedirectToLocal(returnUrl);
+                        case SignInStatus.LockedOut:
+                            return View("Lockout");
+                        case SignInStatus.RequiresVerification:
+                            return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                        case SignInStatus.Failure:
+                        default:
+                            ModelState.AddModelError("", "Nieprawidłowa próba logowania.");
+                            return View(model);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Potwierdź adres e-mail.");
                     return View(model);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Nieprawidłowa próba logowania.");
+                return View(model);
             }
         }
 
@@ -152,18 +170,49 @@ namespace G.A.Z.SIOS.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                user.Email = model.Email;
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage(
+                    new System.Net.Mail.MailAddress("SIOS_GAZ@outlook.com", "Web Registration"),
+                    new System.Net.Mail.MailAddress(user.Email));
+                    m.Subject = "Email confirmation";
+                    m.IsBodyHtml = true;
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    var body = new StringBuilder();
+                    body.AppendFormat("Witaj {0} <br>", user.UserName);
+                    body.AppendLine(@"Potwierdź konto, klikając na podany link ");
+                    string url = callbackUrl.ToString();
+                    body.AppendFormat("<a href=\"{0}\">tutaj</a>", url);
+                    m.Body = body.ToString();
+                    System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp-mail.outlook.com");
+                    smtp.Port = 587;
+                    smtp.Credentials = new System.Net.NetworkCredential("SIOS_GAZ@outlook.com", "Qwerty12345");
+                    smtp.EnableSsl = true;
+                    try
+                    {
+                        smtp.Send(m);
+                        return RedirectToAction("Confirm", "Account", new { Email = user.Email });
+                    }
+                    catch
+                    {
+                        ModelState.AddModelError("", "Rejestracja wymaga potwierdzenia adresu e-mail. Niestey serwer mailowy jest przeciążony, spróbuj później.");
+                        return View(model);
+                    }
                     
+                    
+
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
                     // Aby uzyskać więcej informacji o sposobie włączania potwierdzania konta i resetowaniu hasła, odwiedź stronę https://go.microsoft.com/fwlink/?LinkID=320771
                     // Wyślij wiadomość e-mail z tym łączem
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Potwierdź konto", "Potwierdź konto, klikając <a href=\"" + callbackUrl + "\">tutaj</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -183,6 +232,14 @@ namespace G.A.Z.SIOS.Controllers
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+
+        //
+        // GET: /Account/Confirm
+        [AllowAnonymous]
+        public ActionResult Confirm(string Email)
+        {
+            ViewBag.Email = Email; return View();
         }
 
         //
@@ -209,12 +266,39 @@ namespace G.A.Z.SIOS.Controllers
                     return View("ForgotPasswordConfirmation");
                 }
 
+                System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage(
+                    new System.Net.Mail.MailAddress("SIOS_GAZ@outlook.com", "Web Registration"),
+                    new System.Net.Mail.MailAddress(user.Email));
+                m.Subject = "Resetuj hasło";
+                m.IsBodyHtml = true;
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                var body = new StringBuilder();
+                body.AppendFormat("Witaj {0} <br>", user.UserName);
+                body.AppendLine(@"Resetuj hasło, klikając na podany link ");
+                string url = callbackUrl.ToString();
+                body.AppendFormat("<a href=\"{0}\">tutaj</a>", url);
+                m.Body = body.ToString();
+                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp-mail.outlook.com");
+                smtp.Port = 587;
+                smtp.Credentials = new System.Net.NetworkCredential("SIOS_GAZ@outlook.com", "Qwerty12345");
+                smtp.EnableSsl = true;
+                try
+                {
+                    smtp.Send(m);
+                    return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "Serwer mailowy jest przeciążony, spróbuj później.");
+                    return View(model);
+                }
                 // Aby uzyskać więcej informacji o sposobie włączania potwierdzania konta i resetowaniu hasła, odwiedź stronę https://go.microsoft.com/fwlink/?LinkID=320771
                 // Wyślij wiadomość e-mail z tym łączem
                 // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
                 // await UserManager.SendEmailAsync(user.Id, "Resetuj hasło", "Resetuj hasło, klikając <a href=\"" + callbackUrl + "\">tutaj</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                
             }
 
             // Dotarcie do tego miejsca wskazuje, że wystąpił błąd, wyświetl ponownie formularz

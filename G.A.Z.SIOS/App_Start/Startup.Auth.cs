@@ -51,24 +51,10 @@ namespace G.A.Z.SIOS
             // Ta opcja działa podobnie do opcji RememberMe podczas logowania.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
-            // Usuń znaczniki komentarza z poniższych wierszy, aby włączyć logowanie przy użyciu innych dostawców logowania
             app.UseMicrosoftAccountAuthentication(
                 clientId: "1ae82c41-f5e5-456a-9598-cdff7e95e287",
                 clientSecret: "W//@XeE54Rh1ixoMW]xg0CPscC.b=12?");
-
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
-
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
-
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            
         }
     }
 }

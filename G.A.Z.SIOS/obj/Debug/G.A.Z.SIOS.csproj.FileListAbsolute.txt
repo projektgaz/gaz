@@ -276,3 +276,11 @@ C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.csproj.CoreComp
 C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.csproj.CopyComplete
 C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.dll
 C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.pdb
+C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\bin\SendGrid.dll
+C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\bin\System.Net.Http.dll
+C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\bin\System.Security.Cryptography.Algorithms.dll
+C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\bin\System.Security.Cryptography.Encoding.dll
+C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\bin\System.Security.Cryptography.Primitives.dll
+C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\bin\SendGrid.pdb
+C:\Users\Student\Desktop\ala\gaz\G.A.Z.SIOS\bin\SendGrid.xml

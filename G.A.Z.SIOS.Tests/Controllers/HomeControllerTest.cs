@@ -24,7 +24,7 @@ namespace G.A.Z.SIOS.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-
+        
         [TestMethod]
         public void About()
         {
@@ -46,6 +46,45 @@ namespace G.A.Z.SIOS.Tests.Controllers
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Imprezy_studenckie()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Imprezy_studenckie() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Dodaj_wydarzenie()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Dodaj_wydarzenie() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Opinie_i_raporty()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Opinie_i_raporty() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

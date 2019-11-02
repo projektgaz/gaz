@@ -11,6 +11,12 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using G.A.Z.SIOS.Models;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using Microsoft.Web;
+using System.Net;
+using System.Configuration;
+using System.Web.Helpers;
 
 namespace G.A.Z.SIOS
 {

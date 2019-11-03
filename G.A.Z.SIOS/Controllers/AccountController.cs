@@ -175,9 +175,9 @@ namespace G.A.Z.SIOS.Controllers
                 if (result.Succeeded)
                 {
                     System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage(
-                    new System.Net.Mail.MailAddress("SIOS_GAZ@outlook.com", "Web Registration"),
+                    new System.Net.Mail.MailAddress("sios.gaz@gmail.com", "Email confirmation"),
                     new System.Net.Mail.MailAddress(user.Email));
-                    m.Subject = "Email confirmation";
+                    m.Subject = "Potwierdź konto";
                     m.IsBodyHtml = true;
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
@@ -187,9 +187,9 @@ namespace G.A.Z.SIOS.Controllers
                     string url = callbackUrl.ToString();
                     body.AppendFormat("<a href=\"{0}\">tutaj</a>", url);
                     m.Body = body.ToString();
-                    System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp-mail.outlook.com");
+                    System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com");
                     smtp.Port = 587;
-                    smtp.Credentials = new System.Net.NetworkCredential("SIOS_GAZ@outlook.com", "Qwerty12345");
+                    smtp.Credentials = new System.Net.NetworkCredential("sios.gaz@gmail.com", "qwerty!@#$%");
                     smtp.EnableSsl = true;
                     try
                     {
@@ -206,7 +206,6 @@ namespace G.A.Z.SIOS.Controllers
 
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    // Aby uzyskać więcej informacji o sposobie włączania potwierdzania konta i resetowaniu hasła, odwiedź stronę https://go.microsoft.com/fwlink/?LinkID=320771
                     // Wyślij wiadomość e-mail z tym łączem
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
@@ -267,7 +266,7 @@ namespace G.A.Z.SIOS.Controllers
                 }
 
                 System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage(
-                    new System.Net.Mail.MailAddress("SIOS_GAZ@outlook.com", "Web Registration"),
+                    new System.Net.Mail.MailAddress("sios.gaz@gmail.com", "ResetPassword"),
                     new System.Net.Mail.MailAddress(user.Email));
                 m.Subject = "Resetuj hasło";
                 m.IsBodyHtml = true;
@@ -279,9 +278,9 @@ namespace G.A.Z.SIOS.Controllers
                 string url = callbackUrl.ToString();
                 body.AppendFormat("<a href=\"{0}\">tutaj</a>", url);
                 m.Body = body.ToString();
-                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp-mail.outlook.com");
+                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com");
                 smtp.Port = 587;
-                smtp.Credentials = new System.Net.NetworkCredential("SIOS_GAZ@outlook.com", "Qwerty12345");
+                smtp.Credentials = new System.Net.NetworkCredential("sios.gaz@gmail.com", "qwerty!@#$%");
                 smtp.EnableSsl = true;
                 try
                 {
@@ -293,11 +292,12 @@ namespace G.A.Z.SIOS.Controllers
                     ModelState.AddModelError("", "Serwer mailowy jest przeciążony, spróbuj później.");
                     return View(model);
                 }
-                // Aby uzyskać więcej informacji o sposobie włączania potwierdzania konta i resetowaniu hasła, odwiedź stronę https://go.microsoft.com/fwlink/?LinkID=320771
+
                 // Wyślij wiadomość e-mail z tym łączem
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Resetuj hasło", "Resetuj hasło, klikając <a href=\"" + callbackUrl + "\">tutaj</a>");
+                //string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                //var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                //string callbackUrls = callbackUrl.ToString();
+                //await UserManager.SendEmailAsync(user.Id, "Resetuj hasło", "Witaj "+user.Id+"<br>Resetuj hasło, klikając <a href=\"" + callbackUrls + "\">tutaj</a>");
                 
             }
 

@@ -1,13 +1,15 @@
 ﻿
 @{
-    ViewBag.Title = "Dodaj_wydarzenie";
+    ViewBag.Title = "Dodaj Wydarzenie";
 }
-<h2>Dodawanie wydarzenia</h2><br />
-    <div>
-        Nazwa wydarzenie: <input type="text" /><br />
-        Miejsce wydarzenia: <input type="text" /><br />
-        Czas: <input type="datetime" /><br />
-        Rodzaj wydarzenia:<br />
-        Impreza <input type="checkbox" /> Wojsko <input type="checkbox" /> Targi pracy <input type="checkbox" /> Naukowe <input type="checkbox" /><br />
-        <input type="submit" value="Dodaj wydarzenie"/><br />
-    </div>
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div>
+    Nazwa wydarzenie: <input type="text" /><br />
+    Miejsce wydarzenia: <input type="text" /><br />
+    Czas: <input type="datetime" /><br />
+    Rodzaj wydarzenia:<br />
+    Impreza <input type="checkbox" /> Wojsko <input type="checkbox" /> Targi pracy <input type="checkbox" /> Naukowe <input type="checkbox" /><br />
+    <input type="submit" value="Dodaj wydarzenie" /><br />
+</div>

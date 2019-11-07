@@ -12,6 +12,62 @@ namespace G.A.Z.SIOS.Tests.Controllers
     [TestClass]
     public class HomeControllerTest
     {
+        public bool EmailTest()
+        {
+            System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage(
+                    new System.Net.Mail.MailAddress("sios.gaz@gmail.com", "Email confirmation"),
+                    new System.Net.Mail.MailAddress("sebastian.trzeciak@student.wat.edu.pl"));
+            m.Subject = "Potwierdź konto";
+            m.IsBodyHtml = true;
+            m.Body = "Test smtp connection";
+            System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com");
+            smtp.Port = 587;
+            smtp.Credentials = new System.Net.NetworkCredential("sios.gaz@gmail.com", "qwerty!@#$%");
+            smtp.EnableSsl = true;
+            try
+            {
+                smtp.Send(m);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        
+        [TestMethod]
+        public void EmailTesting()
+        {
+            bool smtp_connection = EmailTest();
+            Assert.IsTrue(smtp_connection);
+        }
+
+        [TestMethod]
+        public void Register()
+        {
+            // Arrange
+            AccountController controller = new AccountController();
+            
+            // Act
+            ViewResult result = controller.Register() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void ForgotPassword()
+        {
+            // Arrange
+            AccountController controller = new AccountController();
+
+            // Act
+            ViewResult result = controller.ForgotPassword() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        /*
         [TestMethod]
         public void Index()
         {
@@ -89,5 +145,6 @@ namespace G.A.Z.SIOS.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+        */
     }
 }

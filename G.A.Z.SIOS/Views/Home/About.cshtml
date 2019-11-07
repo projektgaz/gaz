@@ -1,7 +1,163 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/fontello.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext" rel="stylesheet">
+    <style type="text/css">
+        body {
+            background-color: #303030;
+            color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            font-size: 20px;
+            margin: 0 !important;
+        }
 
-<p>Use this area to provide additional information.</p>
+        .container {
+            width: 100%;
+        }
+
+        .naglowek {
+            width: 100%;
+            text-align: center;
+            color: #FEFEFE;
+            min-height: 40px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        .opisglowny {
+            width: 100%;
+            text-align: center;
+        }
+
+        .zdjecie {
+            float: left;
+            min-height: 100px;
+            margin-left: 10px;
+        }
+
+        .opisczlonka {
+            float: left;
+            text-align: left;
+            margin-left: 20px;
+            margin-top: 20px;
+            color: #FEFEFE;
+        }
+
+        .odwiedziny {
+            width: 100%;
+        }
+
+        .fb {
+            width: 70px;
+            height: 50px;
+            float: left;
+        }
+
+            .fb:hover {
+                background-color: #4668b3;
+            }
+
+        .ig {
+            width: 70px;
+            height: 50px;
+            float: left;
+        }
+
+            .ig:hover {
+                background-color: #E679CD;
+            }
+    </style>
+</head>
+<body class="container" style="width:100%; height:100%">
+    <div class="naglowek">
+        <p style=""><strong>O NAS</strong></p>
+    </div>
+    <div class="opisglowny">
+        <p>Jesteśmy grupą studentów, która odsługuje platformę skupiającą wszystkie imprezy studenckie, targi pracy, wydarzenia kulturalne w jednym miejscu.</p>
+        <p>Korzystając z aplikacji będziesz wiedział co się aktualnie dzieje oraz na jakie wydarzenie się zdecydować.</p>
+        <p>Wydarzenia jakie proponujemy są dodawane przez organizatorów instytucje oraz studentów takich jak Ty!</p>
+        <p>Będziesz wiedział jakie wydarzenia oraz jacy organizatorzy są teraz na topie.</p>
+        <p>Nie czekaj długo i zostań jednym z użytkowników! Nie możemy się doczekać aż Cię poznamy!</p>
+        <p>Poniżej przedstawimy Ci się byś mógł poznać Nas lepiej :)</p>
+    </div>
+    <div class="opisglowny">
+        <div class="zdjecie">
+            <a href="#"><img src="~/Images/gerard.jpg"></a>
+        </div>
+        <div class="opisczlonka">
+            <p>Gerard jest studentem 4 roku Kryptologii i Cyberbezpieczeństwa. Interesuje się bezpieczeństwem w sieci oraz sztukami walki.</p>
+            <p>W wolnych chwilach lubi pograć w koszykówkę czy pojeździć na rowerze.</p>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+    <div class="opisglowny">
+        <div class="zdjecie">
+            <a href="#"><img src="~/Images/seba.jpg"></a>
+        </div>
+        <div class="opisczlonka">
+            <p>Sebastian jest studentem 4 roku Kryptologii i Cyberbezpieczeństwa. Pasjonuje go polityka oraz ataki sieciowe.</p>
+            <p>W wolnych chwilach biega półmaratony i trenuje pływanie</p>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+    <div class="opisglowny">
+        <div class="zdjecie">
+            <a href="#"><img src="~/Images/jedrzej.jpg"></a>
+        </div>
+        <div class="opisczlonka">
+            <p>Jędrzej jest studentem 4 roku Kryptologii i Cyberbezpieczeństwa. Bazy danych to jego chleb powszedni.</p>
+            <p>W wolnych chwilach uczęszcza na zajęcia tańca klasycznego. Nie pogardzi dobrą książką czy filmem.</p>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+    <div class="opisglowny">
+        <div class="zdjecie">
+            <a href="#"><img src="~/Images/paulina.jpg"></a>
+        </div>
+        <div class="opisczlonka">
+            <p>Paulina jest studentem 4 roku Kryptologii i Cyberbezpieczeństwa. Paulina zajmuje się zaporami sieciowymi, w tej materii nie ma sobie równych.</p>
+            <p>Gdy znajduje chwilę wolnego uwielbia pójść na imprezę czy do teatru. To ona jest matką naszego pomysłu "G.A.Z. SIOS".</p>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+    <div class="opisglowny">
+        <div class="zdjecie">
+            <a href="#"><img src="~/Images/gabrys.jpg"></a>
+        </div>
+        <div class="opisczlonka">
+            <p>Gabriel jest studentem 4 roku Kryptologii i Cyberbezpieczeństwa. Na codzień zajmuje się kontrolowaniem obiektów wojskowych.</p>
+            <p>W dni wolne bierze plecak z wodą i podróżuje po całej Polsce. O wakacje warto pytać właśnie jego!</p>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+    <div class="opisglowny">
+        <p style="text-align: left; margin-left: 20px;">Możesz nas znaleźć również na:</p>
+        <div class="opisglowny">
+            <a href="https://www.facebook.com/GAZ-SIOS-115855283186705/">
+                <div class="fb">
+                     
+                </div>
+            </a>
+            <a href="https://www.instagram.com/g.a.z.sios/">
+                <div class="ig">
+                   
+                </div>
+            </a>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+ 
+</body>
+</html>

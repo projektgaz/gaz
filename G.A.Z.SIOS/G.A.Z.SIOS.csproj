@@ -227,9 +227,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\gabrys.jpg" />
+    <Content Include="Images\gerard.jpg" />
     <Content Include="Images\impreza.jpg" />
+    <Content Include="Images\jedrzej.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\naukowe.jpg" />
+    <Content Include="Images\paulina.jpg" />
+    <Content Include="Images\seba.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Images\wojsko.jpg" />

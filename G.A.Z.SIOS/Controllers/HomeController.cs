@@ -38,7 +38,7 @@ namespace G.A.Z.SIOS.Controllers
         [Authorize]
         public ActionResult Dodaj_wydarzenie()
         {
-            ViewBag.Message = "Aktualne wydarzenia studenckie.";
+            ViewBag.Message = "Dodawanie nowego wydarzenia";
 
             return View();
         }

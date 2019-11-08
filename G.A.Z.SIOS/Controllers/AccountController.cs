@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using G.A.Z.SIOS.Models;
 using System.Text;
+using System.Net.Mail;
 
 namespace G.A.Z.SIOS.Controllers
 {
@@ -23,7 +24,7 @@ namespace G.A.Z.SIOS.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +36,9 @@ namespace G.A.Z.SIOS.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -138,7 +139,7 @@ namespace G.A.Z.SIOS.Controllers
             // Jeśli użytkownik będzie wprowadzać niepoprawny kod przez określoną ilość czasu, konto użytkownika 
             // zostanie zablokowane na określoną ilość czasu. 
             // Możesz skonfigurować ustawienia blokady konta w elemencie IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -201,8 +202,8 @@ namespace G.A.Z.SIOS.Controllers
                         ModelState.AddModelError("", "Rejestracja wymaga potwierdzenia adresu e-mail. Niestey serwer mailowy jest przeciążony, spróbuj później.");
                         return View(model);
                     }
-                    
-                    
+
+
 
                     //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
@@ -298,7 +299,7 @@ namespace G.A.Z.SIOS.Controllers
                 //var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 //string callbackUrls = callbackUrl.ToString();
                 //await UserManager.SendEmailAsync(user.Id, "Resetuj hasło", "Witaj "+user.Id+"<br>Resetuj hasło, klikając <a href=\"" + callbackUrls + "\">tutaj</a>");
-                
+
             }
 
             // Dotarcie do tego miejsca wskazuje, że wystąpił błąd, wyświetl ponownie formularz
@@ -564,6 +565,7 @@ namespace G.A.Z.SIOS.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+        
         #endregion
     }
 }

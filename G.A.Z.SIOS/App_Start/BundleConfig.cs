@@ -23,7 +23,7 @@ namespace G.A.Z.SIOS
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap_slate.css",
                       "~/Content/site.css"));
         }
     }

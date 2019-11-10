@@ -1,15 +1,57 @@
-﻿
+﻿@model G.A.Z.SIOS.Models.EventViewModels
 @{
     ViewBag.Title = "Dodaj Wydarzenie";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h4>@ViewBag.Title.</h4>
 
-<div>
-    Nazwa wydarzenie:  <input type="text" /><br />
-    Miejsce wydarzenia: <input type="text" /><br />
-    Czas: <input type="datetime" /><br />
-    Rodzaj wydarzenia:<br />
-    Impreza <input type="checkbox" /> Wojsko <input type="checkbox" /> Targi pracy <input type="checkbox" /> Naukowe <input type="checkbox" /><br />
-    <input type="submit" value="Dodaj wydarzeniesdf" /><br />
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Dodaj_wydarzenie", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Nazwa, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Nazwa, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Nazwa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Data, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Data, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Data, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Miejsce, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Miejsce, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Miejsce, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Cena_wejsciowki, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Cena_wejsciowki, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Cena_wejsciowki, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Rodzaj, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Rodzaj, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Rodzaj, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Dodaj wydarzenie" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
 </div>

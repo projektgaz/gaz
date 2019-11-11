@@ -12,8 +12,7 @@ namespace G.A.Z.SIOS.Controllers
         // GET: Event
         public ActionResult EventList()
         {
-            List<EventViewModels> lista = new List<EventViewModels>();
-            lista = new EventDBContext().Wydarzenia.ToList<EventViewModels>();
+            List<EventViewModels> lista = new EventDBContext().Wydarzenia.ToList<EventViewModels>();
 
             var viewModel = new Events()
             {

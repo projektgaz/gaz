@@ -4,7 +4,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EventList</h2>
-<h2>@Model.Wydarzenie.ElementAt(0).Nazwa</h2>
-<h2>@Model.Wydarzenie.ElementAt(1).Nazwa</h2>
+<h2>Wszystkie wydarzenia</h2>
+
+<dev class="row">
+    <div class="col-md-8">
+        @foreach (var item in Model.Wydarzenie)
+        {
+            <hr />
+            <div class="form-group">
+                @Html.DisplayFor(modelItem => item.Data) <br />
+                <div class="col-md-10">
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </div>
+            </div>
+        }
+        </div>
+</dev>
 

@@ -1,6 +1,6 @@
 ﻿@model G.A.Z.SIOS.Models.Events
 @{
-    ViewBag.Title = "EventList";
+    ViewBag.Title = "Wszystkie wydarzenia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,10 +12,9 @@
         {
             <hr />
             <div class="form-group">
-                @Html.DisplayFor(modelItem => item.Data.Day).@Html.DisplayFor(modelItem => item.Data.Month).@Html.DisplayFor(modelItem => item.Data.Year)
-                <br />
+                @Html.DisplayFor(modelItem => item.Data.Day).@Html.DisplayFor(modelItem => item.Data.Month).@Html.DisplayFor(modelItem => item.Data.Year)   @Html.DisplayFor(modelItem => item.Data.Hour):@Html.DisplayFor(modelItem => item.Data.Minute)
+                <h3>@Html.DisplayFor(modelItem => item.Nazwa)</h3>
                 <div class="col-md-10">
-                    @Html.DisplayFor(modelItem => item.Nazwa)
                     @Html.DisplayFor(modelItem => item.Miejsce)
                     @Html.DisplayFor(modelItem => item.Cena_wejsciowki) zł
                 </div>

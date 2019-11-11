@@ -12,12 +12,14 @@
         {
             <hr />
             <div class="form-group">
-                @Html.DisplayFor(modelItem => item.Data) <br />
+                @Html.DisplayFor(modelItem => item.Data.Day).@Html.DisplayFor(modelItem => item.Data.Month).@Html.DisplayFor(modelItem => item.Data.Year)
+                <br />
                 <div class="col-md-10">
                     @Html.DisplayFor(modelItem => item.Nazwa)
                     @Html.DisplayFor(modelItem => item.Miejsce)
                     @Html.DisplayFor(modelItem => item.Cena_wejsciowki) zł
                 </div>
+                <br />
             </div>
         }
         </div>

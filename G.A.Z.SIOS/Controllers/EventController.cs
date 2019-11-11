@@ -12,8 +12,7 @@ namespace G.A.Z.SIOS.Controllers
         // GET: Event
         public ActionResult EventList()
         {
-            List<EventViewModels> lista = new EventDBContext().Wydarzenia.ToList<EventViewModels>();
-            lista.OrderByDescending(d => d.Data);
+            List<EventViewModels> lista = new EventDBContext().Wydarzenia.OrderByDescending(x => x.Data).ToList<EventViewModels>();
             var viewModel = new Events()
             {
                 Wydarzenie = lista

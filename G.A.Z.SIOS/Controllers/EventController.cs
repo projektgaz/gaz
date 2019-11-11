@@ -12,14 +12,10 @@ namespace G.A.Z.SIOS.Controllers
         // GET: Event
         public ActionResult EventList()
         {
-            var Wydarzenie = new List<EventViewModels>
-            {
-                new EventViewModels() { Nazwa = "Impra1" },
-                new EventViewModels() { Nazwa = "Impra2" }
-            };
+            List<EventViewModels> lista = new EventDBContext().Wydarzenia.OrderByDescending(x => x.Data).ToList<EventViewModels>();
             var viewModel = new Events()
             {
-                Wydarzenie = Wydarzenie
+                Wydarzenie = lista
             };
             return View(viewModel);
         }

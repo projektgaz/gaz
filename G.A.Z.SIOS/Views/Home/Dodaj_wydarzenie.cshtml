@@ -1,4 +1,4 @@
-﻿@model G.A.Z.SIOS.Models.EventViewModels
+﻿@model G.A.Z.SIOS.Models.Objekty
 @{
     ViewBag.Title = "Dodaj Wydarzenie";
 }
@@ -9,41 +9,71 @@
         <section id="loginForm">
             @using (Html.BeginForm("Dodaj_wydarzenie", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 text-success">
+                        <br />
+                        <strong>@ViewBag.SuccessMessage</strong>
+                    </div>
+                </div>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Nazwa, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.EventViewModels.Nazwa, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Nazwa, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Nazwa, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.EventViewModels.Nazwa, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EventViewModels.Nazwa, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Data, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.EventViewModels.Data, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Data, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Data, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.EventViewModels.Data, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EventViewModels.Data, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Miejsce, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.EventViewModels.Miejsce, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Miejsce, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Miejsce, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.EventViewModels.Miejsce, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EventViewModels.Miejsce, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Cena_wejsciowki, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.EventViewModels.Cena_wejsciowki, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Cena_wejsciowki, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Cena_wejsciowki, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.EventViewModels.Cena_wejsciowki, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EventViewModels.Cena_wejsciowki, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Rodzaj, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Rodzaj, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Rodzaj, "", new { @class = "text-danger" })
+                    @Html.LabelFor(m => m.EventViewModels.Rodzaj, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.CheckBoxFor(m => m.Rodzaje.Targi_pracy, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Targi_pracy, new { @class = "col-md-2 text-primary" })</small>
+                        @Html.CheckBoxFor(m => m.Rodzaje.Swiateczne, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Swiateczne, new { @class = "col-md-2 text-primary" })</small>
+                        @Html.CheckBoxFor(m => m.Rodzaje.Sport, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Sport, new { @class = "col-md-2 text-primary" })</small>
+                        @Html.CheckBoxFor(m => m.Rodzaje.Przysiega, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Przysiega, new { @class = "col-md-2 text-primary" })</small>
+                    </div>
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.CheckBoxFor(m => m.Rodzaje.Pozegnalne, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Pozegnalne, new { @class = "col-md-2 text-primary" })</small>
+                        @Html.CheckBoxFor(m => m.Rodzaje.Piknik, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Piknik, new { @class = "col-md-2 text-primary" })</small>
+                        @Html.CheckBoxFor(m => m.Rodzaje.Naukowe, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Naukowe, new { @class = "col-md-2 text-primary" })</small>
+                        @Html.CheckBoxFor(m => m.Rodzaje.Inne, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Inne, new { @class = "col-md-2 text-primary" })</small>
+                    </div>
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.CheckBoxFor(m => m.Rodzaje.Promocja_wojskowa, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Promocja_wojskowa, new { @class = "col-md-2 text-primary" })</small>
+                        @Html.CheckBoxFor(m => m.Rodzaje.Konkurs, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Konkurs, new { @class = "col-md-2 text-primary" })</small>
+                        @Html.CheckBoxFor(m => m.Rodzaje.Juwenalia, new { @class = "chackbox pull-left" })
+                        <small>@Html.LabelFor(m => m.Rodzaje.Juwenalia, new { @class = "col-md-2 text-primary" })</small>
                     </div>
                 </div>
                 <div class="form-group">

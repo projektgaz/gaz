@@ -39,21 +39,39 @@ namespace G.A.Z.SIOS.Controllers
         public ActionResult Dodaj_wydarzenie()
         {
             EventViewModels obj = new EventViewModels();
-
-            return View("Dodaj_wydarzenie",obj);
+            Rodzaje rodzaje = new Rodzaje();
+            var objekty = new Objekty()
+            {
+                EventViewModels = obj,
+                Rodzaje = rodzaje
+            };
+            return View("Dodaj_wydarzenie", objekty);
         }
         [HttpPost]
-        public ActionResult Dodaj_wydarzenie(EventViewModels obj)
+        public ActionResult Dodaj_wydarzenie(Objekty obj)
         {
+            string typ = "";
+            if (obj.Rodzaje.Targi_pracy == true)typ += "Targi_pracy,";
+            if (obj.Rodzaje.Swiateczne == true) typ += "Swiateczne,";
+            if (obj.Rodzaje.Sport == true) typ += "Sport,";
+            if (obj.Rodzaje.Przysiega == true) typ += "Przysiega,";
+            if (obj.Rodzaje.Promocja_wojskowa == true) typ += "Promocja_wojskowa,";
+            if (obj.Rodzaje.Pozegnalne == true) typ += "Pozegnalne,";
+            if (obj.Rodzaje.Piknik == true) typ += "Piknik,";
+            if (obj.Rodzaje.Naukowe == true) typ += "Naukowe,";
+            if (obj.Rodzaje.Konkurs == true) typ += "Konkurs,";
+            if (obj.Rodzaje.Juwenalia == true) typ += "Juwenalia,";
+            if (obj.Rodzaje.Inne == true) typ += "Inne,";
+            obj.EventViewModels.Rodzaj = typ;
             if (!ModelState.IsValid)
             {
                 return View("Dodaj_wydarzenie", obj);
             }
-
             EventDBContext eventDBContext = new EventDBContext();
-            eventDBContext.Wydarzenia.Add(new EventViewModels() { Nazwa = obj.Nazwa, Miejsce = obj.Miejsce, Cena_wejsciowki = obj.Cena_wejsciowki, Rodzaj = obj.Rodzaj, Data = obj.Data });
+            eventDBContext.Eventy.Add(new EventViewModels() { Nazwa = obj.EventViewModels.Nazwa, Miejsce = obj.EventViewModels.Miejsce, Cena_wejsciowki = obj.EventViewModels.Cena_wejsciowki, Rodzaj = obj.EventViewModels.Rodzaj, Data = obj.EventViewModels.Data });
             eventDBContext.SaveChanges();
-            return View("Dodaj_wydarzenie", obj);
+            ViewBag.SuccessMessage = "Twoje wydarzenie zostało dodane pomyślnie!";
+            return View("Dodaj_wydarzenie");
 
         }
 

@@ -39,6 +39,9 @@ namespace G.A.Z.SIOS.Models
         public int Zainteresowani_count { get; set; }
         [Display(Name = "Plakat promocyjny")]
         public int Image_id { get; set; }
+        [Required]
+        [Display(Name = "Opis_wydarzenia")]
+        public string Opis { get; set; }
         public EventViewModels()
         {
             Data = DateTime.Now;

@@ -68,7 +68,7 @@ namespace G.A.Z.SIOS.Controllers
                 return View("Dodaj_wydarzenie", obj);
             }
             EventDBContext eventDBContext = new EventDBContext();
-            eventDBContext.Eventy.Add(new EventViewModels() { Nazwa = obj.EventViewModels.Nazwa, Miejsce = obj.EventViewModels.Miejsce, Cena_wejsciowki = obj.EventViewModels.Cena_wejsciowki, Rodzaj = obj.EventViewModels.Rodzaj, Data = obj.EventViewModels.Data });
+            eventDBContext.Eventy.Add(new EventViewModels() { Nazwa = obj.EventViewModels.Nazwa, Miejsce = obj.EventViewModels.Miejsce, Cena_wejsciowki = obj.EventViewModels.Cena_wejsciowki, Rodzaj = obj.EventViewModels.Rodzaj, Data = obj.EventViewModels.Data, Opis = obj.EventViewModels.Opis });
             eventDBContext.SaveChanges();
             ViewBag.SuccessMessage = "Twoje wydarzenie zostało dodane pomyślnie!";
             return View("Dodaj_wydarzenie");

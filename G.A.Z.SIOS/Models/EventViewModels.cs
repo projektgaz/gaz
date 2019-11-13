@@ -28,7 +28,7 @@ namespace G.A.Z.SIOS.Models
         [Display(Name = "Cena biletu")]
         public decimal Cena_wejsciowki { get; set; }
         [Display(Name = "Id_organizatora")]
-        public int ID_organizator { get; set; }
+        public string ID_organizator { get; set; }
         [Display(Name = "Rodzaj_wydarzenia")]
         public string Rodzaj { get; set; }
         [Display(Name = "Ocena")]
@@ -90,4 +90,5 @@ namespace G.A.Z.SIOS.Models
         public EventViewModels EventViewModels { get; set; }
         public Rodzaje Rodzaje { get; set; }
     }
+    
 }

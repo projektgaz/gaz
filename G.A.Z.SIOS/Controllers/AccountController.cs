@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using G.A.Z.SIOS.Models;
 using System.Text;
 using System.Net.Mail;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace G.A.Z.SIOS.Controllers
 {
@@ -60,6 +61,7 @@ namespace G.A.Z.SIOS.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+
             return View();
         }
 
@@ -132,6 +134,7 @@ namespace G.A.Z.SIOS.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, "User");
                     System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage(
                     new System.Net.Mail.MailAddress("sios.gaz@gmail.com", "Email confirmation"),
                     new System.Net.Mail.MailAddress(user.Email));

@@ -10,6 +10,7 @@ namespace G.A.Z.SIOS.Controllers
     public class EventController : Controller
     {
         // GET: Event
+        [Authorize(Roles = "Organizator,User")]
         public ActionResult EventList()
         {
             List<EventViewModels> lista = new EventDBContext().Eventy.OrderByDescending(x => x.Data).ToList<EventViewModels>();

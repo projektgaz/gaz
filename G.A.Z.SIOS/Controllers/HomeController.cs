@@ -21,14 +21,15 @@ namespace G.A.Z.SIOS.Controllers
 
             return View();
         }
-
+        
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
-        
+
+        [Authorize(Roles = "Organizator,User")]
         public ActionResult Imprezy_studenckie()
         {
             ViewBag.Message = "Aktualne wydarzenia studenckie.";
@@ -36,6 +37,7 @@ namespace G.A.Z.SIOS.Controllers
             return RedirectToAction("EventList", "Event");
         }
         
+        [Authorize(Roles = "Organizator")]
         public ActionResult Dodaj_wydarzenie()
         {
             EventViewModels obj = new EventViewModels();
@@ -48,6 +50,7 @@ namespace G.A.Z.SIOS.Controllers
             return View("Dodaj_wydarzenie", objekty);
         }
         [HttpPost]
+        [Authorize(Roles = "Organizator")]
         public ActionResult Dodaj_wydarzenie(Objekty obj)
         {
             string typ = "";
@@ -68,14 +71,14 @@ namespace G.A.Z.SIOS.Controllers
                 return View("Dodaj_wydarzenie", obj);
             }
             EventDBContext eventDBContext = new EventDBContext();
-            eventDBContext.Eventy.Add(new EventViewModels() { Nazwa = obj.EventViewModels.Nazwa, Miejsce = obj.EventViewModels.Miejsce, Cena_wejsciowki = obj.EventViewModels.Cena_wejsciowki, Rodzaj = obj.EventViewModels.Rodzaj, Data = obj.EventViewModels.Data, Opis = obj.EventViewModels.Opis });
+            eventDBContext.Eventy.Add(new EventViewModels() { Nazwa = obj.EventViewModels.Nazwa, Miejsce = obj.EventViewModels.Miejsce, Cena_wejsciowki = obj.EventViewModels.Cena_wejsciowki, Rodzaj = obj.EventViewModels.Rodzaj, Data = obj.EventViewModels.Data, Opis = obj.EventViewModels.Opis, ID_organizator = User.Identity.Name });
             eventDBContext.SaveChanges();
             ViewBag.SuccessMessage = "Twoje wydarzenie zostało dodane pomyślnie!";
             return View("Dodaj_wydarzenie");
 
         }
 
-        [Authorize]
+        [Authorize(Roles = "Organizator,User")]
         public ActionResult Opinie_i_raporty()
         {
             ViewBag.Message = "Aktualne wydarzenia studenckie.";

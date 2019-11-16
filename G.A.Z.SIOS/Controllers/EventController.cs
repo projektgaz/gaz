@@ -13,12 +13,22 @@ namespace G.A.Z.SIOS.Controllers
         [Authorize(Roles = "Organizator,User")]
         public ActionResult EventList()
         {
-            List<EventViewModels> lista = new EventDBContext().Eventy.OrderByDescending(x => x.Data).ToList<EventViewModels>();
+            List<EventViewModels> lista = new EventDBContext().Eventy.OrderBy(x => x.Data).ToList<EventViewModels>();
             var viewModel = new Events()
             {
                 Wydarzenie = lista
             };
             return View(viewModel);
         }
+        [Authorize(Roles = "Organizator,User")]
+        public ActionResult EventDetails()
+        {
+            var detailModel = new EventViewModels()
+            {
+
+            }
+            return View();
+        }
+
     }
 }

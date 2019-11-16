@@ -8,8 +8,7 @@
 
 @foreach (var item in Model.Wydarzenie)
 {
-<dev class="row">
-    <div style="border: 1px solid white;">
+    <dev class="row">
         <div class="col-md-2">
             <h5>@Html.DisplayFor(modelItem => item.Data.Day).@Html.DisplayFor(modelItem => item.Data.Month).@Html.DisplayFor(modelItem => item.Data.Year)</h5>
         </div>
@@ -17,8 +16,7 @@
             <h5>@Html.DisplayFor(modelItem => item.Data.Hour):@Html.DisplayFor(modelItem => item.Data.Minute)</h5>
         </div>
         <div class="col-md-7">
-            <h4>@Html.DisplayFor(modelItem => item.Nazwa)</h4>
+            <h4>@Html.ActionLink(""+@Html.DisplayFor(modelItem => item.Nazwa)+"", "EventDetails", "Event")</h4>
         </div>
-    </div>
-</dev>
+    </dev>
 }

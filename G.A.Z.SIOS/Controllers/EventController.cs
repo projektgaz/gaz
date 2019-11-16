@@ -25,9 +25,9 @@ namespace G.A.Z.SIOS.Controllers
         {
             var detailModel = new EventViewModels()
             {
-
-            }
-            return View();
+                Nazwa = "Nowe"
+            };
+            return View(detailModel);
         }
 
     }

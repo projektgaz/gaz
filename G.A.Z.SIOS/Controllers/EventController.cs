@@ -21,12 +21,9 @@ namespace G.A.Z.SIOS.Controllers
             return View(viewModel);
         }
         [Authorize(Roles = "Organizator,User")]
-        public ActionResult EventDetails()
+        public ActionResult EventDetails(int id)
         {
-            var detailModel = new EventViewModels()
-            {
-                Nazwa = "Nowe"
-            };
+            EventViewModels detailModel = new EventDBContext().Eventy.Find(id);
             return View(detailModel);
         }
 

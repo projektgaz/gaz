@@ -25,7 +25,7 @@ namespace G.A.Z.SIOS.Controllers
         {
             EventViewModels evm = new EventDBContext().Eventy.Find(id);
             var detailModel = evm;
-            return View(detailModel);
+            return View("EventDetails", detailModel);
         }
 
     }

@@ -10,7 +10,7 @@
 {
     <dev class="row">
         <div class="col-md-2">
-            <h5>@Html.DisplayFor(modelItem => item.Data.Day).@Html.DisplayFor(modelItem => item.Data.Month).@Html.DisplayFor(modelItem => item.Data.Year)</h5>
+            <h5>@Html.DisplayFor(modelItem => item.Data.Day).@if (item.Data.Month < 10) { <p>0</p>; }@Html.DisplayFor(modelItem => item.Data.Month).@Html.DisplayFor(modelItem => item.Data.Year)</h5>
         </div>
         <div class="col-md-2">
             <h5>@Html.DisplayFor(modelItem => item.Data.Hour):@Html.DisplayFor(modelItem => item.Data.Minute)</h5>

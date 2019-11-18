@@ -16,7 +16,7 @@
             <h5>@Html.DisplayFor(modelItem => item.Data.Hour):@Html.DisplayFor(modelItem => item.Data.Minute)</h5>
         </div>
         <div class="col-md-7">
-            <h4>@Html.ActionLink("" + @Html.DisplayFor(modelItem => item.Nazwa), "EventDetails", "Event", new { id = @Html.DisplayFor(modelItem => item.ID) })</h4>
+            <h4>@Html.ActionLink("" + @Html.DisplayFor(modelItem => item.Nazwa), "EventDetails", new { id = @Html.DisplayFor(modelItem => item.ID) })</h4>
         </div>
     </dev>
 }

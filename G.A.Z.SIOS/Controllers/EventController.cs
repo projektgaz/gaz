@@ -20,7 +20,6 @@ namespace G.A.Z.SIOS.Controllers
             };
             return View(viewModel);
         }
-        [HttpPost]
         [Authorize(Roles = "Organizator,User")]
         public ActionResult EventDetails(int? id, int? t)
         {

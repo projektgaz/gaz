@@ -58,9 +58,14 @@ namespace G.A.Z.SIOS.Controllers
         }
 
         [Authorize]
-        public ActionResult Opinie_i_raporty()
+        public ActionResult Opinie_i_raporty(OpiniaViewModels obj)
         {
             ViewBag.Message = "Aktualne wydarzenia studenckie.";
+
+            OpiniaDBContext eventDBContext = new OpiniaDBContext();
+            opiniaDBContext.Wydarzenia.Add(new OpiniaViewModels() { Nazwa = obj.Nazwa, Miejsce = obj.Miejsce, Cena_wejsciowki = obj.Cena_wejsciowki, Rodzaj = obj.Rodzaj, Data = obj.Data });
+            opiniaDBContext.SaveChanges();
+            return View("Dodaj_wydarzenie", obj);
 
             return View();
         }

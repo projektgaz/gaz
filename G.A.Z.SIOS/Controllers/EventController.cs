@@ -20,6 +20,7 @@ namespace G.A.Z.SIOS.Controllers
             };
             return View(viewModel);
         }
+        [HttpPost]
         [Authorize(Roles = "Organizator,User")]
         public ActionResult EventDetails(int? id, int? t)
         {
@@ -35,21 +36,6 @@ namespace G.A.Z.SIOS.Controllers
             }
             return View("EventDetails", detailModel);
         }
-        [Authorize(Roles = "Organizator,User")]
-        public ActionResult EventInterested(int? id)
-        {
-            EventViewModels evm = new EventDBContext().Eventy.Find(id);
-            var detailModel = evm;
-            ViewBag.SuccessMessage = "Dziękujemy za zainteresowanie wydarzeniem";
-            return View("EventDetails", detailModel);
-        }
-        [Authorize(Roles = "Organizator,User")]
-        public ActionResult EventJoin(int? id)
-        {
-            EventViewModels evm = new EventDBContext().Eventy.Find(id);
-            var detailModel = evm;
-            ViewBag.SuccessMessage = "Dziękujemy za wzięcie udziału";
-            return View("EventDetails", detailModel);
-        }
+
     }
 }

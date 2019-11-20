@@ -17,10 +17,10 @@
     if (item.Data.Month < 10) { miesiac = "0" + item.Data.Month; }
     if (item.Data.Minute < 10) { minuta = "0" + item.Data.Minute; }
     <dev class="row">
-        <div class="col-md-2">
+        <div class="col-md-1">
             <h5>@Html.DisplayFor(modelItem => item.Data.Day).@miesiac.@Html.DisplayFor(modelItem => item.Data.Year)</h5>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
             <h5>@Html.DisplayFor(modelItem => item.Data.Hour):@minuta</h5>
         </div>
         <div class="col-md-7">

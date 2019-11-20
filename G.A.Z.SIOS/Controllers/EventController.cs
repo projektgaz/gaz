@@ -27,6 +27,19 @@ namespace G.A.Z.SIOS.Controllers
             var detailModel = evm;
             return View("EventDetails", detailModel);
         }
-
+        public ActionResult EventInterested(int? id)
+        {
+            EventViewModels evm = new EventDBContext().Eventy.Find(id);
+            var detailModel = evm;
+            ViewBag.SuccessMessage = "Dziękujemy za zainteresowanie wydarzeniem";
+            return View("EventDetails", detailModel);
+        }
+        public ActionResult EventJoin(int? id)
+        {
+            EventViewModels evm = new EventDBContext().Eventy.Find(id);
+            var detailModel = evm;
+            ViewBag.SuccessMessage = "Dziękujemy za wzięcie udziału";
+            return View("EventDetails", detailModel);
+        }
     }
 }

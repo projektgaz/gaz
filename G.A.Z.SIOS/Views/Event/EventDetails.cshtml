@@ -2,14 +2,25 @@
 @{
     ViewBag.Title = "Szczegóły";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var miesiac = "";
+    var minuta = "";
+    if (Model.Data.Month < 10) { miesiac = "0" + Model.Data.Month; } else { miesiac += Model.Data.Month; }
+    if (Model.Data.Minute < 10) { minuta = "0" + Model.Data.Minute; } else { minuta += Model.Data.Minute; }
 }
 
 <h2>@Html.DisplayFor(m => m.Nazwa)</h2>
 <dev class="row">
     <div class="col-md-2">
-        <h5></h5>
+        <h5>Miejsce: @Html.DisplayFor(m => m.Miejsce)</h5>
+        <h5>Data:    @Html.DisplayFor(m => m.Data.Day).@miesiac.@Html.DisplayFor(m => m.Data.Year)</h5>
+        <h5>Godzina: @Html.DisplayFor(m => m.Data.Hour):@minuta</h5>
+        <h5>Cena:    @Html.DisplayFor(m => m.Cena_wejsciowki);zł</h5>
+        <p>@Html.DisplayFor(m => m.Opis)</p>
     </div>
     <div class="col-md-7">
-        
+        <h5>Bierze udział: @Html.DisplayFor(m => m.Udzial_count)</h5>
+        <input type="button" value="Weź udział" onclick="location.href='@Url.Action("EventInterested", "Event", new { id = @Html.DisplayFor(m => m.ID) })'" />
+        <h5>Zainteresowani: @Html.DisplayFor(m => m.Zainteresowani_count)</h5>
+        <input type="button" value="Zaiteresowany" onclick="location.href='@Url.Action("EventJoin", "Event", new { id = @Html.DisplayFor(m => m.ID) })'" />
     </div>
 </dev>

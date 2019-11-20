@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.Entity.Infrastructure;
+using System.Web.Mvc;
 
 namespace G.A.Z.SIOS.Models
 {
@@ -12,7 +17,7 @@ namespace G.A.Z.SIOS.Models
         [Required]
         public string Opinia { get; set; }
         [Required]
-        public int IdUzytkownika { get; set; }
+        public string IdUzytkownika { get; set; }
         [Required]
         public DateTime Data { get; set; }
         [Required]
@@ -20,12 +25,15 @@ namespace G.A.Z.SIOS.Models
     }
     public class OpiniaDBContext : DbContext
     {
+        public DbSet<OpiniaViewModels> Opinie { get; set; }
         public OpiniaDBContext() : base("name=DefaultConnection")
         {
+            //disable initializer
+            Database.SetInitializer<OpiniaDBContext>(null);
         }
-        public DbSet<OpiniaViewModels> Wydarzenia { get; set; }
     }
 }
+
 
 /*
 id

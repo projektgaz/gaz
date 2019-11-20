@@ -18,13 +18,13 @@ namespace G.A.Z.SIOS.Models
         [Required]
         public int IdWydarzenia { get; set; }
     }
-    public class OpiniaDBContext : DbContext
-    {
-        public OpiniaDBContext() : base("name=DefaultConnection")
-        {
-        }
-        public DbSet<OpiniaViewModels> Wydarzenia { get; set; }
-    }
+    //public class OpiniaDBContext : DbContext
+    //{
+        //public OpiniaDBContext() : base("name=DefaultConnection")
+        //{
+        //}
+       // public DbSet<OpiniaViewModels> Wydarzenia { get; set; }
+    //}
 }
 
 /*

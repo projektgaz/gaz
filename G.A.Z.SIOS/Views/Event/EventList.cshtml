@@ -10,6 +10,8 @@
 
 @foreach (var item in Model.Wydarzenie)
 {
+    miesiac = "";
+    minuta = "";
     miesiac += item.Data.Month;
     minuta += item.Data.Minute;
     if (item.Data.Month < 10) { miesiac = "0" + item.Data.Month; }

@@ -10,9 +10,6 @@
 
 <h2>@Html.DisplayFor(m => m.Nazwa)</h2>
 <dev class="row">
-    <div class="text-success">
-        <strong>@ViewBag.SuccessMessage</strong>
-    </div>
     <div class="col-md-4">
         <h4>Miejsce: @Html.DisplayFor(m => m.Miejsce)</h4>
         <h4>Data:    @Html.DisplayFor(m => m.Data.Day).@miesiac.@Html.DisplayFor(m => m.Data.Year)</h4>
@@ -25,5 +22,8 @@
         <input type="button" value="Weź udział" class="btn btn-default" onclick="location.href='@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(m => m.ID), t = 1 })'" />
         <h4>Zainteresowani: @Html.DisplayFor(m => m.Zainteresowani_count)</h4>
         <input type="button" value="Zaiteresowany" class="btn btn-default" onclick="location.href='@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(m => m.ID), t = 2 })'" />
+        <div class="text-success">
+            <strong>@ViewBag.SuccessMessage</strong>
+        </div>
     </div>
 </dev>

@@ -1,10 +1,22 @@
 ﻿@model G.A.Z.SIOS.Models.Events
 @{
-    ViewBag.Title = "EventList";
+    ViewBag.Title = "Wszystkie wydarzenia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EventList</h2>
-<h2>@Model.Wydarzenie.ElementAt(0).Nazwa</h2>
-<h2>@Model.Wydarzenie.ElementAt(1).Nazwa</h2>
+<h2>Wszystkie wydarzenia</h2>
 
+@foreach (var item in Model.Wydarzenie)
+{
+    <dev class="row">
+        <div class="col-md-2">
+            <h5>@Html.DisplayFor(modelItem => item.Data.Day).@if (item.Data.Month < 10) { <p>0</p>; }@Html.DisplayFor(modelItem => item.Data.Month).@Html.DisplayFor(modelItem => item.Data.Year)</h5>
+        </div>
+        <div class="col-md-2">
+            <h5>@Html.DisplayFor(modelItem => item.Data.Hour):@Html.DisplayFor(modelItem => item.Data.Minute)</h5>
+        </div>
+        <div class="col-md-7">
+            <a href="@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(modelItem => item.ID) })"><h4>@Html.DisplayFor(modelItem => item.Nazwa)</h4></a>
+        </div>
+    </dev>
+}

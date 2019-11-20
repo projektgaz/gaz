@@ -1,4 +1,5 @@
-﻿@using G.A.Z.SIOS.Models
+﻿@using Microsoft.AspNet.Identity
+@using G.A.Z.SIOS.Models
 @model LoginViewModel
 @{
     ViewBag.Title = "Zaloguj";
@@ -7,6 +8,17 @@
 <h2>@ViewBag.Title.</h2>
 <div class="row">
     <div class="col-md-8">
+        <div class="text-info">
+            <div class="col-md-offset-2 col-md-10">
+                @if (ViewBag.returnUrl == "/Home/Dodaj_wydarzenie" && User.Identity.IsAuthenticated)
+                {
+                    ViewBag.Message = "Zakładka tylko dla organizatorów!";
+                    <h4><strong>@ViewBag.Message</strong></h4>
+                    <p>Zaloguj się na konto z uprawnieniami organizatora by wejść w tę zakładkę.</p>
+                    <br />
+                }
+            </div>
+        </div>
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {

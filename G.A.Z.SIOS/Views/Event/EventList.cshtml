@@ -2,21 +2,30 @@
 @{
     ViewBag.Title = "Wszystkie wydarzenia";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var miesiac = "";
+    var minuta = "";
 }
 
 <h2>Wszystkie wydarzenia</h2>
 
 @foreach (var item in Model.Wydarzenie)
 {
+    miesiac = "";
+    minuta = "";
+    miesiac += item.Data.Month;
+    minuta += item.Data.Minute;
+    if (item.Data.Month < 10) { miesiac = "0" + item.Data.Month; }
+    if (item.Data.Minute < 10) { minuta = "0" + item.Data.Minute; }
     <dev class="row">
-        <div class="col-md-2">
-            <h5>@Html.DisplayFor(modelItem => item.Data.Day).@if (item.Data.Month < 10) { <p>0</p>; }@Html.DisplayFor(modelItem => item.Data.Month).@Html.DisplayFor(modelItem => item.Data.Year)</h5>
+        <div class="col-md-1">
+            <h5>@Html.DisplayFor(modelItem => item.Data.Day).@miesiac.@Html.DisplayFor(modelItem => item.Data.Year)</h5>
         </div>
-        <div class="col-md-2">
-            <h5>@Html.DisplayFor(modelItem => item.Data.Hour):@Html.DisplayFor(modelItem => item.Data.Minute)</h5>
+        <div class="col-md-1">
+            <h5>@Html.DisplayFor(modelItem => item.Data.Hour):@minuta</h5>
         </div>
         <div class="col-md-7">
             <a href="@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(modelItem => item.ID) })"><h4>@Html.DisplayFor(modelItem => item.Nazwa)</h4></a>
         </div>
     </dev>
+
 }

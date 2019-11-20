@@ -2,14 +2,28 @@
 @{
     ViewBag.Title = "Szczegóły";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var miesiac = "";
+    var minuta = "";
+    if (Model.Data.Month < 10) { miesiac = "0" + Model.Data.Month; } else { miesiac += Model.Data.Month; }
+    if (Model.Data.Minute < 10) { minuta = "0" + Model.Data.Minute; } else { minuta += Model.Data.Minute; }
 }
 
 <h2>@Html.DisplayFor(m => m.Nazwa)</h2>
 <dev class="row">
-    <div class="col-md-2">
-        <h5></h5>
+    <div class="text-success">
+        <strong>@ViewBag.SuccessMessage</strong>
     </div>
-    <div class="col-md-7">
-        
+    <div class="col-md-4">
+        <h4>Miejsce: @Html.DisplayFor(m => m.Miejsce)</h4>
+        <h4>Data:    @Html.DisplayFor(m => m.Data.Day).@miesiac.@Html.DisplayFor(m => m.Data.Year)</h4>
+        <h4>Godzina: @Html.DisplayFor(m => m.Data.Hour):@minuta</h4>
+        <h4>Cena:    @Html.DisplayFor(m => m.Cena_wejsciowki)zł</h4>
+        <p>@Html.DisplayFor(m => m.Opis)</p>
+    </div>
+    <div class="col-md-5">
+        <h4>Bierze udział: @Html.DisplayFor(m => m.Udzial_count)</h4>
+        <input type="button" value="Weź udział" class="btn btn-default" onclick="location.href='@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(m => m.ID), t = 1 })'" />
+        <h4>Zainteresowani: @Html.DisplayFor(m => m.Zainteresowani_count)</h4>
+        <input type="button" value="Zaiteresowany" class="btn btn-default" onclick="location.href='@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(m => m.ID), t = 2 })'" />
     </div>
 </dev>

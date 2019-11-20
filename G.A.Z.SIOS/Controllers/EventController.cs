@@ -20,11 +20,20 @@ namespace G.A.Z.SIOS.Controllers
             };
             return View(viewModel);
         }
+        [HttpPost]
         [Authorize(Roles = "Organizator,User")]
-        public ActionResult EventDetails(int? id)
+        public ActionResult EventDetails(int? id, int? t)
         {
             EventViewModels evm = new EventDBContext().Eventy.Find(id);
             var detailModel = evm;
+            if(t == 1)
+            {
+                ViewBag.SuccessMessage = "Dziękujemy za zainteresowanie wydarzeniem";
+            }
+            if(t == 2)
+            {
+                ViewBag.SuccessMessage = "Dziękujemy za wzięcie udziału";
+            }
             return View("EventDetails", detailModel);
         }
 

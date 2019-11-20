@@ -27,6 +27,7 @@ namespace G.A.Z.SIOS.Controllers
             var detailModel = evm;
             return View("EventDetails", detailModel);
         }
+        [Authorize(Roles = "Organizator,User")]
         public ActionResult EventInterested(int? id)
         {
             EventViewModels evm = new EventDBContext().Eventy.Find(id);
@@ -34,6 +35,7 @@ namespace G.A.Z.SIOS.Controllers
             ViewBag.SuccessMessage = "Dziękujemy za zainteresowanie wydarzeniem";
             return View("EventDetails", detailModel);
         }
+        [Authorize(Roles = "Organizator,User")]
         public ActionResult EventJoin(int? id)
         {
             EventViewModels evm = new EventDBContext().Eventy.Find(id);

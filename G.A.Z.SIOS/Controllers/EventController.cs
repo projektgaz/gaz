@@ -16,13 +16,11 @@ namespace G.A.Z.SIOS.Controllers
             ViewBag.Message = "Wszystkie wydarzenia";
             var viewModel = new Events();
             List<EventViewModels> lista = new EventDBContext().Eventy.OrderBy(x => x.Data).ToList<EventViewModels>();
-            if(t == 0)
-            {
-                viewModel.Wydarzenie = lista;
-            }
+            viewModel.Wydarzenie = lista;
             if(t == 1)
             {
                 ViewBag.Message = "Targi pracy";
+                viewModel = new Events();
                 foreach (var item in lista)
                 {
                     string str = item.Rodzaj;

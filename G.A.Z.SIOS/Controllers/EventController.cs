@@ -21,10 +21,11 @@ namespace G.A.Z.SIOS.Controllers
             }
             if(t == 1)
             {
-                foreach(var item in lista)
+                ViewBag.Message = "Targi pracy";
+                foreach (var item in lista)
                 {
                     string str = item.Rodzaj;
-                    if (str.Contains("Targi_pracy,"))
+                    if (!str.Contains("Targi_pracy,"))
                     {
                         lista.RemoveAt(lista.IndexOf(item));
                     }

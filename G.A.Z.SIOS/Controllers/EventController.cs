@@ -11,20 +11,14 @@ namespace G.A.Z.SIOS.Controllers
     {
         // GET: Event
         [Authorize(Roles = "Organizator,User")]
-        public ActionResult EventList()
-        {
-            List<EventViewModels> lista = new EventDBContext().Eventy.OrderBy(x => x.Data).ToList<EventViewModels>();
-            var viewModel = new Events()
-            {
-                Wydarzenie = lista
-            };
-            ViewBag.Message = "Wszystkie wydarzenia";
-            return View(viewModel);
-        }
-        [Authorize(Roles = "Organizator,User")]
         public ActionResult EventList(int? t)
         {
+            ViewBag.Message = "Wszystkie wydarzenia";
             List<EventViewModels> lista = new EventDBContext().Eventy.OrderBy(x => x.Data).ToList<EventViewModels>();
+            if(t == 0)
+            {
+                return View(lista);
+            }
             if(t == 1)
             {
                 foreach(var item in lista)
@@ -40,7 +34,7 @@ namespace G.A.Z.SIOS.Controllers
             {
                 Wydarzenie = lista
             };
-            ViewBag.Message = "Wszystkie wydarzenia";
+            
             return View(viewModel);
         }
 

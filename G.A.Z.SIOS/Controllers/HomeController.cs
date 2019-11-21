@@ -34,7 +34,7 @@ namespace G.A.Z.SIOS.Controllers
         {
             ViewBag.Message = "Aktualne wydarzenia studenckie.";
 
-            return RedirectToAction("EventList", "Event", new { t = 0 });
+            return RedirectToAction("EventList", "Event");
         }
         
         [Authorize(Roles = "Organizator")]

@@ -14,10 +14,11 @@ namespace G.A.Z.SIOS.Controllers
         public ActionResult EventList(int? t)
         {
             ViewBag.Message = "Wszystkie wydarzenia";
+            var viewModel = new Events();
             List<EventViewModels> lista = new EventDBContext().Eventy.OrderBy(x => x.Data).ToList<EventViewModels>();
             if(t == 0)
             {
-                return View(lista);
+                viewModel.Wydarzenie = lista;
             }
             if(t == 1)
             {
@@ -25,17 +26,12 @@ namespace G.A.Z.SIOS.Controllers
                 foreach (var item in lista)
                 {
                     string str = item.Rodzaj;
-                    if (!str.Contains("Targi_pracy,"))
+                    if (str.Contains("Targi_pracy,"))
                     {
-                        lista.RemoveAt(lista.IndexOf(item));
+                        viewModel.Wydarzenie.Add(item);
                     }
                 }
             }
-            var viewModel = new Events()
-            {
-                Wydarzenie = lista
-            };
-            
             return View(viewModel);
         }
 

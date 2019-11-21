@@ -18,8 +18,32 @@ namespace G.A.Z.SIOS.Controllers
             {
                 Wydarzenie = lista
             };
+            ViewBag.Message = "Wszystkie wydarzenia";
             return View(viewModel);
         }
+        [Authorize(Roles = "Organizator,User")]
+        public ActionResult EventList(int? t)
+        {
+            List<EventViewModels> lista = new EventDBContext().Eventy.OrderBy(x => x.Data).ToList<EventViewModels>();
+            if(t == 1)
+            {
+                foreach(var item in lista)
+                {
+                    string str = item.Rodzaj;
+                    if (str.Contains("Targi_pracy,"))
+                    {
+                        lista.RemoveAt(lista.IndexOf(item));
+                    }
+                }
+            }
+            var viewModel = new Events()
+            {
+                Wydarzenie = lista
+            };
+            ViewBag.Message = "Wszystkie wydarzenia";
+            return View(viewModel);
+        }
+
         [Authorize(Roles = "Organizator,User")]
         public ActionResult EventDetails(int? id, int? t)
         {

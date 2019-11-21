@@ -6,7 +6,32 @@
     var minuta = "";
 }
 
-<h2>Wszystkie wydarzenia</h2>
+    <h2>@ViewBag.Message</h2>
+<div class="row">
+    <div class="col-md-1">
+        <input type="button" value="#Targi pracy" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 1 })'" />
+        <input type="button" value="#Świąteczne" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 2 })'" />
+    </div>
+    <div class="col-md-1">
+        <input type="button" value="#Sport" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 3 })'" />
+        <input type="button" value="#Przysięga" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 4 })'" />
+    </div>
+    <div class="col-md-1">
+        <input type="button" value="#Pożegnalne" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 5 })'" />
+        <input type="button" value="#Piknik" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 6 })'" />
+    </div>
+    <div class="col-md-1">
+        <input type="button" value="#Naukowe" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 7 })'" />
+        <input type="button" value="#Promocja Wojskowa" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 8 })'" />
+    </div>
+    <div class="col-md-1">
+        <input type="button" value="#Konkurs" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 9 })'" />
+        <input type="button" value="#Juwenalia" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 10 })'" />
+    </div>
+    <div class="col-md-1">
+        <input type="button" value="#Inne" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 0 })'" />
+    </div>
+</div>
 
 @foreach (var item in Model.Wydarzenie)
 {

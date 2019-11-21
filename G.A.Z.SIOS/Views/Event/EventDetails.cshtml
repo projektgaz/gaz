@@ -17,11 +17,15 @@
         <h4>Cena:    @Html.DisplayFor(m => m.Cena_wejsciowki)zł</h4>
         <p>@Html.DisplayFor(m => m.Opis)</p>
     </div>
-    <div class="col-md-5">
-        <h4>Bierze udział: @Html.DisplayFor(m => m.Udzial_count)</h4>
-        <input type="button" value="Weź udział" class="btn btn-default" onclick="location.href='@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(m => m.ID), t = 1 })'" />
-        <h4>Zainteresowani: @Html.DisplayFor(m => m.Zainteresowani_count)</h4>
-        <input type="button" value="Zaiteresowany" class="btn btn-default" onclick="location.href='@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(m => m.ID), t = 2 })'" />
+    <div class="col-md-7">
+        <div class="col-md-4">
+            <h4>Bierze udział: @Html.DisplayFor(m => m.Udzial_count)</h4>
+            <h4>Zainteresowani: @Html.DisplayFor(m => m.Zainteresowani_count)</h4>
+        </div>
+        <div class="col-md-4">
+            <input type="button" value="Weź udział" class="btn btn-default" onclick="location.href='@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(m => m.ID), t = 1 })'" />
+            <input type="button" value="Zaiteresowany" class="btn btn-default" onclick="location.href='@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(m => m.ID), t = 2 })'" />
+        </div>
         <div class="text-success">
             <strong>@ViewBag.SuccessMessage</strong>
         </div>

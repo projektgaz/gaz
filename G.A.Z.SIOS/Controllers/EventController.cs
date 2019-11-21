@@ -30,7 +30,7 @@ namespace G.A.Z.SIOS.Controllers
                     }
                 }
             }
-            return View(viewModel);
+            return View("EventList", viewModel);
         }
 
         [Authorize(Roles = "Organizator,User")]

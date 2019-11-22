@@ -22,7 +22,15 @@ namespace G.A.Z.SIOS.Models
         public DateTime Data { get; set; }
         [Required]
         public int IdWydarzenia { get; set; }
+
+       // public Wydarzenia Lista_Wydarzen { get; set; }
     }
+    /*
+    public enum Wydarzenia
+    {
+        Male,
+        Female
+    }*/
     public class OpiniaDBContext : DbContext
     {
         public DbSet<OpiniaViewModels> Opinie { get; set; }

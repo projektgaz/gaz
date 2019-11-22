@@ -1,4 +1,4 @@
-﻿@model G.A.Z.SIOS.Models.OpiniaViewModels
+﻿@model G.A.Z.SIOS.Models.Events
 @{
     ViewBag.Title = "Opinie_i_raporty";
 }
@@ -21,7 +21,8 @@ var
         <div class="form-group">
             <h4>Wybierz wydarzenie</h4>
             <div class="col-md-10">
-                @Html.ListBoxFor("Lista wydarzeń", , new { @class = "form-control" })
+                @Html.ListBoxFor("Lista wydarzeń", new SelectList(Enum.GetValues(typeof(Gender))), new { @class = "form-control" })
+                <h4>@Html.DisplayFor(modelItem => item.Nazwa)</h4>
             </div>
         </div>
     }

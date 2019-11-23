@@ -1,12 +1,34 @@
-﻿
+﻿@model G.A.Z.SIOS.Models.Events
 @{
     ViewBag.Title = "Opinie_i_raporty";
 }
+<br />
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<h2>Tylko dla zalogowanych uzytkownikow oprcowł Gabriel Lewczuk</h2>
+var 
 
+<div class="row">
+    @using (Html.BeginForm("Opinia_i_raporty", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 text-success">
+                <br />
+                <strong>@ViewBag.SuccessMessage</strong>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>Wybierz wydarzenie</h4>
+            <div class="col-md-10">
+                @Html.ListBoxFor("Lista wydarzeń", new SelectList(Enum.GetValues(typeof(Gender))), new { @class = "form-control" })
+                <h4>@Html.DisplayFor(modelItem => item.Nazwa)</h4>
+            </div>
+        </div>
+    }
+
+
+</div>
 <h2>Wybierz wydarzenie o którym chcesz napisać opinię</h2>
 <label for=" Moje_wydarzenia">Wydarzenia</label>
 <select id="Moje_wydarzenia">

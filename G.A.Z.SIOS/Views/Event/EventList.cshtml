@@ -2,19 +2,43 @@
 @{
     ViewBag.Title = "Wszystkie wydarzenia";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var miesiac = "";
+    var minuta = "";
 }
 
-<h2>Wszystkie wydarzenia</h2>
+    <h2>@ViewBag.Message</h2>
+<div class="row">
+        <input type="button" value="#Targi pracy" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 1 })'" />
+        <input type="button" value="#Świąteczne" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 2 })'" />
+        <input type="button" value="#Sport" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 3 })'" />
+        <input type="button" value="#Przysięga" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 4 })'" />
+        <input type="button" value="#Pożegnalne" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 5 })'" />
+        <input type="button" value="#Piknik" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 6 })'" />
+        <input type="button" value="#Naukowe" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 7 })'" />
+        <input type="button" value="#Promocja Wojskowa" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 8 })'" />
+        <input type="button" value="#Konkurs" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 9 })'" />
+        <input type="button" value="#Juwenalia" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 10 })'" />
+        <input type="button" value="#Inne" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event", new { t = 11 })'" />
+</div>
 
 @foreach (var item in Model.Wydarzenie)
 {
+    miesiac = "";
+    minuta = "";
+    miesiac += item.Data.Month;
+    minuta += item.Data.Minute;
+    if (item.Data.Month < 10) { miesiac = "0" + item.Data.Month; }
+    if (item.Data.Minute < 10) { minuta = "0" + item.Data.Minute; }
     <dev class="row">
-        <div class="col-md-2">
-            @Html.DisplayFor(modelItem => item.Data.Day).@Html.DisplayFor(modelItem => item.Data.Month)<br />
-            @Html.DisplayFor(modelItem => item.Data.DayOfWeek)
+        <div class="col-md-1">
+            <h5>@Html.DisplayFor(modelItem => item.Data.Day).@miesiac.@Html.DisplayFor(modelItem => item.Data.Year)</h5>
         </div>
-        <div class="col-md-10">
-            <h3>@Html.DisplayFor(modelItem => item.Nazwa)</h3>
-        </div>        
+        <div class="col-md-1">
+            <h5>@Html.DisplayFor(modelItem => item.Data.Hour):@minuta</h5>
+        </div>
+        <div class="col-md-7">
+            <a href="@Url.Action("EventDetails", "Event", new { id = @Html.DisplayFor(modelItem => item.ID) })"><h4>@Html.DisplayFor(modelItem => item.Nazwa)</h4></a>
+        </div>
     </dev>
+
 }

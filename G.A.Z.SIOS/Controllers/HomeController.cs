@@ -36,7 +36,7 @@ namespace G.A.Z.SIOS.Controllers
             return RedirectToAction("EventList", "Event");
         }
         
-        //[Authorize(Roles = "Organizator")]
+        [Authorize(Roles = "Organizator")]
         public ActionResult Dodaj_wydarzenie()
         {
             EventViewModels obj = new EventViewModels();
@@ -76,7 +76,7 @@ namespace G.A.Z.SIOS.Controllers
             eventDBContext.Eventy.Add(new EventViewModels() { Nazwa = obj.EventViewModels.Nazwa, Miejsce = obj.EventViewModels.Miejsce, Cena_wejsciowki = obj.EventViewModels.Cena_wejsciowki, Rodzaj = obj.EventViewModels.Rodzaj, Data = obj.EventViewModels.Data, Opis = obj.EventViewModels.Opis, ID_organizator = User.Identity.Name });
             eventDBContext.SaveChanges();
             ViewBag.SuccessMessage = "Twoje wydarzenie zostało dodane pomyślnie!";
-            return View("Dodaj_wydarzenie");
+            return View("Dodaj_wydarzenie", obj);
 
         }
 
@@ -91,6 +91,6 @@ namespace G.A.Z.SIOS.Controllers
             ViewBag.SuccessMessage = "Twoja opinia została dodana pomyślnie!";
             return View("Opinie_i_raporty");
         }
-
+        
     }
 }

@@ -10,7 +10,7 @@
     <div class="col-md-8">
         <div class="text-info">
             <div class="col-md-offset-2 col-md-10">
-                @if (ViewBag.returnUrl == "/Home/Dodaj_wydarzenie" && User.Identity.IsAuthenticated)
+                @if (ViewBag.returnUrl == "/Event/Moje_wydarzenia" && User.Identity.IsAuthenticated)
                 {
                     ViewBag.Message = "Zakładka tylko dla organizatorów!";
                     <h4><strong>@ViewBag.Message</strong></h4>

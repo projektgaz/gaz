@@ -1,64 +1,7 @@
 ﻿@model G.A.Z.SIOS.Models.Objekty
 @{
     ViewBag.Title = "Dodaj Wydarzenie";
-}
-<br />
-<h3>TWOJE WYDARZENIA</h3><hr />
-<br />
-<div class="row" >
-        @foreach (var item in Model.Wydarzenie)
-        {
-            var miesiac = "";
-            var minuta = "";
-            if (item.Data.Month < 10) { miesiac = "0" + item.Data.Month; } else { miesiac += item.Data.Month; }
-            if (item.Data.Minute < 10) { minuta = "0" + item.Data.Minute; } else { minuta += item.Data.Minute; }
-            
-            <table class="table table-striped table-hover ">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>@Html.DisplayFor(modelItem => item.Nazwa)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="active">
-                        <td>Miejsce: </td>
-                        <td>@Html.DisplayFor(modelItem => item.Miejsce)</td>
-                    </tr>
-                    <tr class="active">
-                        <td>Data: </td>
-                        <td>@Html.DisplayFor(modelItem => item.Data.Day).@miesiac.@Html.DisplayFor(modelItem => item.Data.Year)</td>
-                    </tr>
-                    <tr class="active">
-                        <td>Godzina: </td>
-                        <td>@Html.DisplayFor(modelItem => item.Data.Hour):@minuta</td>
-                    </tr>
-                    <tr class="bg-primary">
-                        <td>Cena: </td>
-                        <td>@Html.DisplayFor(modelItem => item.Cena_wejsciowki)zł</td>
-                    </tr>
-                    <tr class="active">
-                        <td>Opis: </td>
-                        <td>@Html.DisplayFor(modelItem => item.Opis)</td>
-                    </tr>
-                    <tr class="success">
-                        <td>Bierze udział: </td>
-                        <td>@Html.DisplayFor(modelItem => item.Udzial_count)</td>
-                    </tr>
-                    <tr class="success">
-                        <td>Zainteresowani: </td>
-                        <td>@Html.DisplayFor(modelItem => item.Zainteresowani_count)</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <bold><big><td class=" btn-group btn-group-justified">@Html.ActionLink("Edytuj Wydarzenie", "EventEdit", "Event", new { event_id = item.ID }, new { @class = "btn btn-default" })
-                            @Html.ActionLink("Marketing", "EventEdit", "Event", new { event_id = item.ID }, new { @class = "btn btn-default" })</td></big></bold>
-                    </tr>
-                </tbody>
-            </table> 
-        }
-</div>
-<br /><hr />
+}<br />
 
 <h2>@ViewBag.Title</h2>
 <div class="row">
@@ -142,6 +85,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
+                        @Html.ActionLink("Powrót", "Moje_wydarzenia", "Event", null, new { @class = "btn btn-default" })
                         <input type="submit" value="Dodaj wydarzenie" class="btn btn-default" />
                     </div>
                 </div>

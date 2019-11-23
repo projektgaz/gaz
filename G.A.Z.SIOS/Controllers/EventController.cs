@@ -190,7 +190,23 @@ namespace G.A.Z.SIOS.Controllers
             return View("EventDetails", detailModel);
         }
 
+        [Authorize(Roles = "Organizator")]
+        public ActionResult Moje_wydarzenia()
+        {
+            EventViewModels obj = new EventViewModels();
+            Rodzaje rodzaje = new Rodzaje();
+            EventDBContext eventDBContext = new EventDBContext();
+            var EventRecords = eventDBContext.Eventy.ToList();
+            var objekty = new Objekty()
+            {
+                EventViewModels = obj,
+                Rodzaje = rodzaje,
+                Wydarzenie = EventRecords
+            };
+            return View("Moje_wydarzenia", objekty);
+        }
 
+        [Authorize(Roles = "Organizator")]
         public ActionResult EventEdit(int event_id)
         {
             Rodzaje rodzaje = new Rodzaje();
@@ -205,6 +221,7 @@ namespace G.A.Z.SIOS.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Organizator")]
         public ActionResult EventEdit(Objekty obj)
         {
             string typ = "";
@@ -222,7 +239,7 @@ namespace G.A.Z.SIOS.Controllers
             obj.EventViewModels.Rodzaj = typ;
             if (!ModelState.IsValid)
             {
-                return View("Dodaj_wydarzenie", obj);
+                return View("EventEdit", obj);
             }
             EventDBContext eventDBContext = new EventDBContext();
             var wybrane_wydarzenie = (from item in eventDBContext.Eventy where item.ID == obj.EventViewModels.ID select item).First();
@@ -233,8 +250,28 @@ namespace G.A.Z.SIOS.Controllers
             wybrane_wydarzenie.Rodzaj = obj.EventViewModels.Rodzaj;
             wybrane_wydarzenie.Cena_wejsciowki = obj.EventViewModels.Cena_wejsciowki;
             eventDBContext.SaveChanges();
-            return RedirectToAction("Dodaj_wydarzenie", "Home");
+            ViewBag.SuccessMessage = "Twoje wydarzenie zostało pomyślnie zmodyfikowane!";
+            return View("EventEdit", obj);
         }
 
+
+        [Authorize(Roles = "Organizator")]
+        public ActionResult EventDelete(int event_id)
+        {
+            EventDBContext eventDBContext = new EventDBContext();
+            var wybrane_wydarzenie = (from item in eventDBContext.Eventy where item.ID == event_id select item).First();
+            eventDBContext.Eventy.Remove(wybrane_wydarzenie);
+            eventDBContext.SaveChanges();
+            EventViewModels obj = new EventViewModels();
+            Rodzaje rodzaje = new Rodzaje();
+            var EventRecords = eventDBContext.Eventy.ToList();
+            var objekty = new Objekty()
+            {
+                EventViewModels = obj,
+                Rodzaje = rodzaje,
+                Wydarzenie = EventRecords
+            };
+            return View("Moje_wydarzenia", objekty);
+        }
     }
 }

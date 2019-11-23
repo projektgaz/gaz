@@ -36,15 +36,18 @@ namespace G.A.Z.SIOS.Controllers
             return RedirectToAction("EventList", "Event");
         }
         
-        [Authorize(Roles = "Organizator")]
+        //[Authorize(Roles = "Organizator")]
         public ActionResult Dodaj_wydarzenie()
         {
             EventViewModels obj = new EventViewModels();
             Rodzaje rodzaje = new Rodzaje();
+            EventDBContext eventDBContext = new EventDBContext();
+            var EventRecords = eventDBContext.Eventy.ToList();
             var objekty = new Objekty()
             {
                 EventViewModels = obj,
-                Rodzaje = rodzaje
+                Rodzaje = rodzaje,
+                Wydarzenie = EventRecords
             };
             return View("Dodaj_wydarzenie", objekty);
         }
@@ -76,6 +79,7 @@ namespace G.A.Z.SIOS.Controllers
             return View("Dodaj_wydarzenie");
 
         }
+
 
         [Authorize(Roles = "Organizator,User")]
         public ActionResult Opinie_i_raporty()

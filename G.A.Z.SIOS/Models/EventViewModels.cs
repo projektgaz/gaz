@@ -89,6 +89,7 @@ namespace G.A.Z.SIOS.Models
     {
         public EventViewModels EventViewModels { get; set; }
         public Rodzaje Rodzaje { get; set; }
+        public List<EventViewModels> Wydarzenie { get; set; }
     }
     
 }

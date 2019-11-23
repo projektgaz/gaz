@@ -190,5 +190,51 @@ namespace G.A.Z.SIOS.Controllers
             return View("EventDetails", detailModel);
         }
 
+
+        public ActionResult EventEdit(int event_id)
+        {
+            Rodzaje rodzaje = new Rodzaje();
+            EventDBContext eventDBContext = new EventDBContext();
+            var wybrane_wydarzenie = (from item in eventDBContext.Eventy where item.ID == event_id select item).First();
+            var objekty = new Objekty()
+            {
+                EventViewModels = wybrane_wydarzenie,
+                Rodzaje = rodzaje
+            };
+            return View("EventEdit", objekty);
+        }
+
+        [HttpPost]
+        public ActionResult EventEdit(Objekty obj)
+        {
+            string typ = "";
+            if (obj.Rodzaje.Targi_pracy == true) typ += "Targi_pracy,";
+            if (obj.Rodzaje.Swiateczne == true) typ += "Swiateczne,";
+            if (obj.Rodzaje.Sport == true) typ += "Sport,";
+            if (obj.Rodzaje.Przysiega == true) typ += "Przysiega,";
+            if (obj.Rodzaje.Promocja_wojskowa == true) typ += "Promocja_wojskowa,";
+            if (obj.Rodzaje.Pozegnalne == true) typ += "Pozegnalne,";
+            if (obj.Rodzaje.Piknik == true) typ += "Piknik,";
+            if (obj.Rodzaje.Naukowe == true) typ += "Naukowe,";
+            if (obj.Rodzaje.Konkurs == true) typ += "Konkurs,";
+            if (obj.Rodzaje.Juwenalia == true) typ += "Juwenalia,";
+            if (obj.Rodzaje.Inne == true) typ += "Inne,";
+            obj.EventViewModels.Rodzaj = typ;
+            if (!ModelState.IsValid)
+            {
+                return View("Dodaj_wydarzenie", obj);
+            }
+            EventDBContext eventDBContext = new EventDBContext();
+            var wybrane_wydarzenie = (from item in eventDBContext.Eventy where item.ID == obj.EventViewModels.ID select item).First();
+            wybrane_wydarzenie.Nazwa = obj.EventViewModels.Nazwa;
+            wybrane_wydarzenie.Miejsce = obj.EventViewModels.Miejsce;
+            wybrane_wydarzenie.Opis = obj.EventViewModels.Opis;
+            wybrane_wydarzenie.Data = obj.EventViewModels.Data;
+            wybrane_wydarzenie.Rodzaj = obj.EventViewModels.Rodzaj;
+            wybrane_wydarzenie.Cena_wejsciowki = obj.EventViewModels.Cena_wejsciowki;
+            eventDBContext.SaveChanges();
+            return RedirectToAction("Dodaj_wydarzenie", "Home");
+        }
+
     }
 }

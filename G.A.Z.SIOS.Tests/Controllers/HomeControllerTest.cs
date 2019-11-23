@@ -6,12 +6,54 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using G.A.Z.SIOS;
 using G.A.Z.SIOS.Controllers;
+using G.A.Z.SIOS.Models;
 
 namespace G.A.Z.SIOS.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
+
+        [TestMethod]
+        public void Dodaj_wydarzenie()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Dodaj_wydarzenie() as ViewResult;
+            
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Dodaj_wydarzenie_HttpPost()
+        {
+            HomeController controller = new HomeController();
+
+            EventViewModels obj = new EventViewModels();
+            obj.Cena_wejsciowki = 0;
+            obj.Data = DateTime.Now;
+            obj.ID = 0;
+            obj.ID_organizator = "User";
+            obj.Image_id = 0;
+            obj.Miejsce = "Place";
+            obj.Nazwa = "Test";
+            obj.Opinia_value = 0;
+            obj.Opis = "test:";
+            obj.Udzial_count = 0;
+            obj.Zainteresowani_count = 0;
+
+            Rodzaje rodzaje = new Rodzaje();
+            obj.Rodzaj = rodzaje.Swiateczne.ToString();
+
+            ViewResult result = controller.Dodaj_wydarzenie(new Objekty(obj, rodzaje)) as ViewResult;
+            Assert.AreEqual("Dodaj_wydarzenie", result.ViewName);
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+
+        /*
         public bool EmailTest()
         {
             System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage(
@@ -67,7 +109,7 @@ namespace G.A.Z.SIOS.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-        /*
+        
         [TestMethod]
         public void Index()
         {

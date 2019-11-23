@@ -28,8 +28,7 @@ namespace G.A.Z.SIOS.Controllers
 
             return View();
         }
-
-        [Authorize(Roles = "Organizator,User")]
+        
         public ActionResult Imprezy_studenckie()
         {
             ViewBag.Message = "Aktualne wydarzenia studenckie.";

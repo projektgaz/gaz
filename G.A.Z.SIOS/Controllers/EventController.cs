@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace G.A.Z.SIOS.Controllers
 {
@@ -196,12 +197,19 @@ namespace G.A.Z.SIOS.Controllers
             EventViewModels obj = new EventViewModels();
             Rodzaje rodzaje = new Rodzaje();
             EventDBContext eventDBContext = new EventDBContext();
+            ImageDBContext imageDBContext = new ImageDBContext();
+            var ImageRecords = imageDBContext.Images.ToList();
             var EventRecords = eventDBContext.Eventy.ToList();
+            ImageFiles imageFiles = new ImageFiles();
+            ImageViewModels image = new ImageViewModels();
             var objekty = new Objekty()
             {
                 EventViewModels = obj,
                 Rodzaje = rodzaje,
-                Wydarzenie = EventRecords
+                Wydarzenie = EventRecords,
+                ImageViewModels = image,
+                ImageFiles = imageFiles,
+                Image = ImageRecords
             };
             return View("Moje_wydarzenia", objekty);
         }
@@ -209,13 +217,22 @@ namespace G.A.Z.SIOS.Controllers
         [Authorize(Roles = "Organizator")]
         public ActionResult EventEdit(int event_id)
         {
-            Rodzaje rodzaje = new Rodzaje();
             EventDBContext eventDBContext = new EventDBContext();
+            ImageDBContext imageDBContext = new ImageDBContext();
+            var ImageRecords = imageDBContext.Images.ToList();
+            var EventRecords = eventDBContext.Eventy.ToList();
+            Rodzaje rodzaje = new Rodzaje();
             var wybrane_wydarzenie = (from item in eventDBContext.Eventy where item.ID == event_id select item).First();
+            ImageFiles imageFiles = new ImageFiles();
+            ImageViewModels image = new ImageViewModels();
             var objekty = new Objekty()
             {
                 EventViewModels = wybrane_wydarzenie,
-                Rodzaje = rodzaje
+                Rodzaje = rodzaje,
+                Wydarzenie = EventRecords,
+                ImageViewModels = image,
+                ImageFiles = imageFiles,
+                Image = ImageRecords
             };
             return View("EventEdit", objekty);
         }
@@ -259,19 +276,70 @@ namespace G.A.Z.SIOS.Controllers
         public ActionResult EventDelete(int event_id)
         {
             EventDBContext eventDBContext = new EventDBContext();
+            ImageDBContext imageDBContext = new ImageDBContext();
             var wybrane_wydarzenie = (from item in eventDBContext.Eventy where item.ID == event_id select item).First();
             eventDBContext.Eventy.Remove(wybrane_wydarzenie);
             eventDBContext.SaveChanges();
             EventViewModels obj = new EventViewModels();
+            ImageViewModels image = new ImageViewModels();
             Rodzaje rodzaje = new Rodzaje();
             var EventRecords = eventDBContext.Eventy.ToList();
+            var ImageRecords = imageDBContext.Images.ToList();
+            ImageFiles imageFiles = new ImageFiles();
             var objekty = new Objekty()
             {
                 EventViewModels = obj,
                 Rodzaje = rodzaje,
-                Wydarzenie = EventRecords
+                Wydarzenie = EventRecords,
+                ImageViewModels = image,
+                ImageFiles = imageFiles,
+                Image = ImageRecords
             };
             return View("Moje_wydarzenia", objekty);
+        }
+
+        [Authorize(Roles = "Organizator")]
+        public ActionResult EventMarketing(int event_id)
+        {
+            EventDBContext eventDBContext = new EventDBContext();
+            ImageDBContext imageDBContext = new ImageDBContext();
+            var wybrane_wydarzenie = (from item in eventDBContext.Eventy where item.ID == event_id select item).First();
+            ImageViewModels image = new ImageViewModels();
+            image.Image_id = wybrane_wydarzenie.ID;
+            Rodzaje rodzaje = new Rodzaje();
+            var EventRecords = eventDBContext.Eventy.ToList();
+            var ImageRecords = imageDBContext.Images.ToList();
+            ImageFiles imageFiles = new ImageFiles();
+            var objekty = new Objekty()
+            {
+                EventViewModels = wybrane_wydarzenie,
+                Rodzaje = rodzaje,
+                Wydarzenie = EventRecords,
+                ImageViewModels = image,
+                ImageFiles = imageFiles,
+                Image = ImageRecords
+            };
+            return View("EventMarketing", objekty);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Organizator")]
+        public ActionResult EventMarketing(Objekty obj)
+        {
+            BinaryReader rdr = new BinaryReader(obj.ImageFiles.ImageFile.InputStream);
+            obj.ImageViewModels.ImageByte = rdr.ReadBytes((int)obj.ImageFiles.ImageFile.ContentLength);
+
+            ImageDBContext imageDBContext = new ImageDBContext();
+            imageDBContext.Images.Add(obj.ImageViewModels);
+            imageDBContext.SaveChanges();
+
+            EventDBContext eventDBContext = new EventDBContext();
+            var wybrane_wydarzenie = (from item in eventDBContext.Eventy where item.ID == obj.EventViewModels.ID select item).First();
+            wybrane_wydarzenie.Image_id = obj.ImageViewModels.Image_id;
+            eventDBContext.SaveChanges();
+            
+            ViewBag.SuccessMessage = "Twój plakat został dodany pomyślnie!";
+            return View("EventMarketing", obj);
         }
     }
 }

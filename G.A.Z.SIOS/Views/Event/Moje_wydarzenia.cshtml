@@ -57,6 +57,21 @@
                         <td>Zainteresowani: </td>
                         <td>@Html.DisplayFor(modelItem => item.Zainteresowani_count)</td>
                     </tr>
+                    <tr class="active">
+                        <td>Plakat promocyjny: </td>
+                        <td>
+                            @if (item.Image_id != 0)
+                            {
+                                foreach (var obraz in Model.Image.Where(c => c.Image_id == item.Image_id))
+                                {
+                                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(obraz.ImageByte))" height="100" width="100">
+                                }
+                            }
+                            else
+                            { <p>Brak obrazu.</p>
+                            }
+                                            </td>
+                    </tr>
                     <tr>
                         <td></td>
                         <bold>

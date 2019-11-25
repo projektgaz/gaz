@@ -13,7 +13,77 @@ namespace G.A.Z.SIOS.Tests.Controllers
     [TestClass]
     public class HomeControllerTest
     {
+        /*
+        [TestMethod]
+        public void Moje_wydarzenia()
+        {
+            // Arrange
+            EventController controller = new EventController();
 
+            // Act
+            ViewResult result = controller.Moje_wydarzenia() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        
+        [TestMethod]
+        public void EventEdit()
+        {
+            // Arrange
+            EventController controller = new EventController();
+
+            //Declare Paramteter ID for existing Event in Database
+            var event_id = 1;
+
+            // Act
+            ViewResult result = controller.EventEdit(event_id) as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void EventEdit_HttpPost()
+        {
+            // Arrange
+            EventController controller = new EventController();
+
+            //Obiekt initialization
+            Rodzaje rodzaje = new Rodzaje();
+            var event_id = 1;
+            EventDBContext eventDBContext = new EventDBContext();
+            var wybrane_wydarzenie = (from item in eventDBContext.Eventy where item.ID == event_id select item).First();
+            var objekty = new Objekty()
+            {
+                EventViewModels = wybrane_wydarzenie,
+                Rodzaje = rodzaje
+            };
+
+            // Act
+            ViewResult result = controller.EventEdit(objekty) as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void EventDelete()
+        {
+            // Arrange
+            EventController controller = new EventController();
+
+            //Declare Paramteter ID for existing Event in Database
+            var event_id = 1;
+
+            // Act
+            ViewResult result = controller.EventDelete(event_id) as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+        
+        
         [TestMethod]
         public void Dodaj_wydarzenie()
         {
@@ -53,7 +123,7 @@ namespace G.A.Z.SIOS.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
 
-        /*
+        
         public bool EmailTest()
         {
             System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage(

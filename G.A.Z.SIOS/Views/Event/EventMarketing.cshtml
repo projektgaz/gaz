@@ -1,0 +1,51 @@
+﻿@model G.A.Z.SIOS.Models.Objekty
+@{
+    ViewBag.Title = "EventMarketing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("EventMarketing", "Event", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <fieldset>
+        <h2>Promocja Wydarzenia</h2>
+
+        <div class="row">
+            <div class="col-md-8">
+                <section id="loginForm">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10 text-success">
+                            <br />
+                            <strong>@ViewBag.SuccessMessage</strong>
+                            <br />
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <hr />
+            @Html.HiddenFor(model => model.EventViewModels.ID)
+            @Html.HiddenFor(model => model.ImageViewModels.Image_id)
+            <div class="form-group">
+                <div class="col-md-10">
+                    <h5>
+                        @Html.LabelFor(m => m.ImageFiles.ImageFile, new { @class = "col-md-2 control-label" })
+                    </h5>
+                </div>
+                <div class="col-md-10">
+                    <input id="ImageFiles.ImageFile" title="Wybierz plakat/obraz"
+                           type="file" name="ImageFiles.ImageFile" required />
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-5 col-md-12">
+                        @Html.ActionLink("Powrót", "Moje_wydarzenia", "Event", null, new { @class = "btn btn-default" })
+                        <input type="submit" value="Dodaj plakat promocyjny" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    
+}

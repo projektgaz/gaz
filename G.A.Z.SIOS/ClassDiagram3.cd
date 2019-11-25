@@ -1,5 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="G.A.Z.SIOS.BundleConfig" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G.A.Z.SIOS.FilterConfig" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G.A.Z.SIOS.EmailService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="G.A.Z.SIOS.SmsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="G.A.Z.SIOS.ApplicationUserManager" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G.A.Z.SIOS.ApplicationSignInManager" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G.A.Z.SIOS.RouteConfig" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G.A.Z.SIOS.Startup" Collapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Startup.Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="G.A.Z.SIOS.MvcApplication" Collapsed="true">
     <Position X="0.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
@@ -7,155 +65,185 @@
       <FileName>Global.asax.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Controllers.AccountController">
+  <Class Name="G.A.Z.SIOS.Controllers.AccountController" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
-    <NestedTypes>
-      <Class Name="G.A.Z.SIOS.Controllers.AccountController.ChallengeResult" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Controllers\AccountController.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAABAChACAQAAAAAAFgEgAABAABIKIAAAERAAQgAAA=</HashCode>
       <FileName>Controllers\AccountController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Controllers.EventController">
-    <Position X="9.25" Y="0.5" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Controllers.EventController" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAIAAAAIABAAQA=</HashCode>
       <FileName>Controllers\EventController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Controllers.HomeController">
-    <Position X="7.5" Y="0.5" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Controllers.HomeController" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEACAAAAAAAAAAIgAAAAAEAAAAAACA=</HashCode>
       <FileName>Controllers\HomeController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Controllers.ManageController">
-    <Position X="5.75" Y="0.5" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="G.A.Z.SIOS.Controllers.ManageController.ManageMessageId" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Controllers\ManageController.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
+  <Class Name="G.A.Z.SIOS.Controllers.ManageController" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABACAAiAAgAAAAABhAAAAAAAAIAIAAEEEgAAkAAA=</HashCode>
       <FileName>Controllers\ManageController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.ExternalLoginConfirmationViewModel">
-    <Position X="4" Y="2" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Migrations.InitialCreate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201911101451323_InitialCreate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="G.A.Z.SIOS.Migrations.InitiCreate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201911112216203_InitiCreate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="G.A.Z.SIOS.Migrations.Configuration" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Migrations\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G.A.Z.SIOS.Models.ExternalLoginConfirmationViewModel" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\AccountViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.ForgotViewModel">
-    <Position X="2.25" Y="4" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.ExternalLoginListViewModel" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G.A.Z.SIOS.Models.ForgotViewModel" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\AccountViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.LoginViewModel">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.LoginViewModel" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAgAAA=</HashCode>
       <FileName>Models\AccountViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.RegisterViewModel">
-    <Position X="2.25" Y="2.25" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.RegisterViewModel" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
       <FileName>Models\AccountViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.ResetPasswordViewModel">
-    <Position X="4" Y="3.5" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.ResetPasswordViewModel" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAgAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
       <FileName>Models\AccountViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.ForgotPasswordViewModel">
-    <Position X="4" Y="0.5" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.ForgotPasswordViewModel" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\AccountViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.EventViewModels">
-    <Position X="11" Y="0.5" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.EventViewModels" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEEACAAAAAgIAABBAAQAIAACAAABAAAAAgAAAAAAA=</HashCode>
       <FileName>Models\EventViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.Events">
-    <Position X="9.25" Y="4.75" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.Events" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\EventViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.EventDBContext">
-    <Position X="9.25" Y="2.75" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.EventDBContext" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\EventViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.Rodzaje">
-    <Position X="12.75" Y="0.5" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.Rodzaje" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAhAAIAAAgAAAIAAAEAAAAAAAAACAIYEAAAA=</HashCode>
       <FileName>Models\EventViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.Objekty">
-    <Position X="11" Y="4.5" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.Objekty" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAEAAAAAAAAAAgAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\EventViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.IndexViewModel">
-    <Position X="4" Y="5.5" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.ApplicationUser" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G.A.Z.SIOS.Models.ApplicationDbContext" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="G.A.Z.SIOS.Models.IndexViewModel" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAAAQAAAEAEA=</HashCode>
       <FileName>Models\ManageViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.SetPasswordViewModel">
-    <Position X="2.25" Y="5.5" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.SetPasswordViewModel" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Models\ManageViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.ChangePasswordViewModel">
-    <Position X="2.25" Y="7" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.ChangePasswordViewModel" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Models\ManageViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.OpiniaViewModels">
-    <Position X="7.5" Y="3" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.OpiniaViewModels" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAEAAAAAAAAAAAAAAJAAAAAAAAABAAA=</HashCode>
       <FileName>Models\OpiniaViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="G.A.Z.SIOS.Models.OpiniaDBContext">
-    <Position X="7.5" Y="5.25" Width="1.5" />
+  <Class Name="G.A.Z.SIOS.Models.OpiniaDBContext" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\OpiniaViewModels.cs</FileName>

@@ -177,16 +177,17 @@ namespace G.A.Z.SIOS.Controllers
         [Authorize(Roles = "Organizator,User")]
         public ActionResult EventDetails(int? id, int? t)
         {
-            EventViewModels evm = new EventDBContext().Eventy.Find(id);
-            var detailModel = evm;
+            EventViewModels evm = new EventDBContext().Eventy.Find(id);            
             if(t == 1)
             {
                 ViewBag.SuccessMessage = "Dziękujemy za wzięcie udziału";
+
             }
             if(t == 2)
             {
                 ViewBag.SuccessMessage = "Dziękujemy za zainteresowanie wydarzeniem";
             }
+            var detailModel = evm;
             return View("EventDetails", detailModel);
         }
 

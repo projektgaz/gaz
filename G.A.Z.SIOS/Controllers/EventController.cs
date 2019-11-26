@@ -224,13 +224,13 @@ namespace G.A.Z.SIOS.Controllers
                 EventViewModels evm = eDB.Eventy.Find(id);
                 intDB.Participant.Add(new ParticipantViewModels() { ID_User = User.Identity.Name, ID_Event = evm.ID });
                 intDB.SaveChanges();
-                evm.Zainteresowani_count += 1;
+                evm.Udzial_count += 1;
                 eDB.SaveChanges();
-                ViewBag.SuccessMessage = "Dziękujemy za wzięcie udziału";
+                ViewBag.SuccessMessage = "Dziękujemy za wzięcie udziału w wydarzeniu";
             }
             else
             {
-                ViewBag.SuccessMessage = "Już wiemy, że weźmiesz udział";
+                ViewBag.SuccessMessage = "Już wiemy, że weźmiesz udział w tym wydarzeniu";
             }
 
             EventViewModels noweevm = new EventDBContext().Eventy.Find(id);

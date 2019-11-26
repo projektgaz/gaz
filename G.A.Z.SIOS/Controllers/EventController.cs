@@ -10,8 +10,6 @@ namespace G.A.Z.SIOS.Controllers
 {
     public class EventController : Controller
     {
-        // GET: Event
-        [Authorize(Roles = "Organizator,User")]
         public ActionResult EventList(int? t)
         {
             ViewBag.Message = "Wszystkie wydarzenia";
@@ -175,22 +173,46 @@ namespace G.A.Z.SIOS.Controllers
             return View("EventList", viewModel);
         }
 
-        [Authorize(Roles = "Organizator,User")]
-        public ActionResult EventDetails(int? id, int? t)
+        public ActionResult EventDetails(int? id)
         {
-            EventViewModels evm = new EventDBContext().Eventy.Find(id);            
-            if(t == 1)
+            EventViewModels evm = new EventDBContext().Eventy.Find(id);
+            ImageViewModels ivm = new ImageDBContext().Images.Find(evm.Image_id);
+            var data = new ImageDetails
             {
-                ViewBag.SuccessMessage = "Dziękujemy za wzięcie udziału";
-
-            }
-            if(t == 2)
-            {
-                ViewBag.SuccessMessage = "Dziękujemy za zainteresowanie wydarzeniem";
-            }
-            var detailModel = evm;
-            return View("EventDetails", detailModel);
+                EventViewModels = evm,
+                ImageViewModels = ivm
+            };
+            return View("EventDetails", data);
         }
+        [Authorize(Roles = "Organizator,User")]
+        public ActionResult EventInterested(int? id)
+        {
+            EventViewModels evm = new EventDBContext().Eventy.Find(id);
+
+            ImageViewModels ivm = new ImageDBContext().Images.Find(evm.Image_id);
+            var data = new ImageDetails
+            {
+                EventViewModels = evm,
+                ImageViewModels = ivm
+            };
+            ViewBag.SuccessMessage = "Zainteresowany";
+            return View("EventDetails", data);
+        }
+        [Authorize(Roles = "Organizator,User")]
+        public ActionResult EventParticipant(int? id)
+        {
+            EventViewModels evm = new EventDBContext().Eventy.Find(id);
+            ImageViewModels ivm = new ImageDBContext().Images.Find(evm.Image_id);
+            var data = new ImageDetails
+            {
+                EventViewModels = evm,
+                ImageViewModels = ivm
+            };
+            ViewBag.SuccessMessage = "Bierze udział";
+            return View("EventDetails", data);
+        }
+
+
 
         [Authorize(Roles = "Organizator")]
         public ActionResult Moje_wydarzenia()

@@ -95,5 +95,10 @@ namespace G.A.Z.SIOS.Models
         public List<ImageViewModels> Image { get; set; }
     }
     
+    public class ImageDetails
+    {
+        public EventViewModels EventViewModels { get; set; }
+        public ImageViewModels ImageViewModels { get; set; }
+    }
    
 }

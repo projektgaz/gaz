@@ -187,28 +187,59 @@ namespace G.A.Z.SIOS.Controllers
         [Authorize(Roles = "Organizator,User")]
         public ActionResult EventInterested(int? id)
         {
-            EventViewModels evm = new EventDBContext().Eventy.Find(id);
+            InterestedDBContext intDB = new InterestedDBContext();
+            var i = intDB.Interested.FirstOrDefault(m => m.ID_User == User.Identity.Name && m.ID_Event == id);
+            if (i == null)
+            {
+                EventDBContext eDB = new EventDBContext();
+                EventViewModels evm = eDB.Eventy.Find(id);
+                intDB.Interested.Add(new InterestedViewModels() { ID_User = User.Identity.Name, ID_Event = evm.ID });
+                intDB.SaveChanges();
+                evm.Zainteresowani_count += 1;
+                eDB.SaveChanges();
+                ViewBag.SuccessMessage = "Dziękujemy za zainteresowanie wydarzeniem";
+            }
+            else
+            {
+                ViewBag.SuccessMessage = "Już wiemy, że interesujesz się tym wydarzeniem";
+            }
 
-            ImageViewModels ivm = new ImageDBContext().Images.Find(evm.Image_id);
+            EventViewModels noweevm = new EventDBContext().Eventy.Find(id);
+            ImageViewModels ivm = new ImageDBContext().Images.Find(noweevm.Image_id);
             var data = new ImageDetails
             {
-                EventViewModels = evm,
+                EventViewModels = noweevm,
                 ImageViewModels = ivm
             };
-            ViewBag.SuccessMessage = "Zainteresowany";
             return View("EventDetails", data);
         }
         [Authorize(Roles = "Organizator,User")]
         public ActionResult EventParticipant(int? id)
         {
-            EventViewModels evm = new EventDBContext().Eventy.Find(id);
-            ImageViewModels ivm = new ImageDBContext().Images.Find(evm.Image_id);
+            ParticipantDBContext intDB = new ParticipantDBContext();
+            var i = intDB.Participant.FirstOrDefault(m => m.ID_User == User.Identity.Name && m.ID_Event == id);
+            if (i == null)
+            {
+                EventDBContext eDB = new EventDBContext();
+                EventViewModels evm = eDB.Eventy.Find(id);
+                intDB.Participant.Add(new ParticipantViewModels() { ID_User = User.Identity.Name, ID_Event = evm.ID });
+                intDB.SaveChanges();
+                evm.Zainteresowani_count += 1;
+                eDB.SaveChanges();
+                ViewBag.SuccessMessage = "Dziękujemy za wzięcie udziału";
+            }
+            else
+            {
+                ViewBag.SuccessMessage = "Już wiemy, że weźmiesz udział";
+            }
+
+            EventViewModels noweevm = new EventDBContext().Eventy.Find(id);
+            ImageViewModels ivm = new ImageDBContext().Images.Find(noweevm.Image_id);
             var data = new ImageDetails
             {
-                EventViewModels = evm,
+                EventViewModels = noweevm,
                 ImageViewModels = ivm
             };
-            ViewBag.SuccessMessage = "Bierze udział";
             return View("EventDetails", data);
         }
 

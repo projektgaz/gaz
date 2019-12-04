@@ -1180,3 +1180,6 @@ C:\Users\Dell\Desktop\Nowy folder\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.csproj.Cor
 C:\Users\Dell\Desktop\Nowy folder\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.csproj.CopyComplete
 C:\Users\Dell\Desktop\Nowy folder\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.dll
 C:\Users\Dell\Desktop\Nowy folder\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.pdb
+C:\Users\KryptoAnalityk\Desktop\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.Migrations.InitialCreate.resources
+C:\Users\KryptoAnalityk\Desktop\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.Migrations.InitiCreate.resources
+C:\Users\KryptoAnalityk\Desktop\gaz\G.A.Z.SIOS\obj\Debug\G.A.Z.SIOS.csproj.GenerateResource.cache

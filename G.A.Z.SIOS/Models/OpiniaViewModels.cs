@@ -37,9 +37,11 @@ namespace G.A.Z.SIOS.Models
         public OpiniaDBContext() : base("name=DefaultConnection")
         {
             //disable initializer
-            Database.SetInitializer<OpiniaDBContext>(null);
+            //Database.SetInitializer<OpiniaDBContext>(null);
         }
     }
+
+    //public 
 }
 
 

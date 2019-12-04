@@ -85,9 +85,9 @@ namespace G.A.Z.SIOS.Controllers
         public ActionResult Opinie_i_raporty()
         {
             OpiniaViewModels op = new OpiniaViewModels();
-            OpiniaDBContext opiniaDBContext = new OpiniaDBContext();
+            /*OpiniaDBContext opiniaDBContext = new OpiniaDBContext();
             opiniaDBContext.Opinie.Add(new OpiniaViewModels() { Opinia = op.Opinia, IdUzytkownika = User.Identity.Name,  Data = op.Data,  IdWydarzenia = op.IdWydarzenia });
-            opiniaDBContext.SaveChanges();
+            opiniaDBContext.SaveChanges();*/
             ViewBag.SuccessMessage = "Twoja opinia została dodana pomyślnie!";
             return View("Opinie_i_raporty");
         }

@@ -31,6 +31,7 @@ namespace G.A.Z.SIOS.Models
         Male,
         Female
     }*/
+    /*
     public class OpiniaDBContext : DbContext
     {
         public DbSet<OpiniaViewModels> Opinie { get; set; }
@@ -39,7 +40,7 @@ namespace G.A.Z.SIOS.Models
             //disable initializer
             //Database.SetInitializer<OpiniaDBContext>(null);
         }
-    }
+    }*/
 
     //public 
 }

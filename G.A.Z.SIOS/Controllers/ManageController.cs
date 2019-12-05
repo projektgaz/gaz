@@ -74,6 +74,29 @@ namespace G.A.Z.SIOS.Controllers
             };
             return View(model);
         }
+        // GET: /Manage/Points
+        public ActionResult Points()
+        {
+            int punkty = 0;
+            PointsDBContext pDB = new PointsDBContext();
+            var i = pDB.Points.FirstOrDefault(m => m.ID_User == User.Identity.Name);
+            if (i == null)
+            {
+                ViewBag.SuccessMessage = "Nie posiadasz jeszcze punktów";
+            }
+            else
+            {
+                punkty = i.Points;
+            }
+            var model = new PointsViewModels
+            {
+                Points = punkty
+            };
+            return View(model);
+        }
+
+
+
 
         //
         // POST: /Manage/RemoveLogin

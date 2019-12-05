@@ -29,6 +29,7 @@
         <div class="col-md-4">
             <input type="button" value="Weź udział" class="btn btn-default" onclick="location.href='@Url.Action("EventParticipant", "Event", new { id = @Html.DisplayFor(m => m.EventViewModels.ID)})'" />
             <input type="button" value="Zaiteresowany" class="btn btn-default" onclick="location.href='@Url.Action("EventInterested", "Event", new { id = @Html.DisplayFor(m => m.EventViewModels.ID)})'" />
+            <input type="button" value="Powrót" class="btn btn-default" onclick="location.href='@Url.Action("EventList", "Event")'" />
         </div>
         <div class="text-success">
             <strong>@ViewBag.SuccessMessage</strong>

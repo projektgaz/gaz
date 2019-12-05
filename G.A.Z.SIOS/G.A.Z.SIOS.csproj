@@ -354,6 +354,7 @@
     <Content Include="Views\Event\EventEdit.cshtml" />
     <Content Include="Views\Event\Moje_wydarzenia.cshtml" />
     <Content Include="Views\Event\EventMarketing.cshtml" />
+    <Content Include="Views\Manage\Points.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

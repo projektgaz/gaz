@@ -226,6 +226,18 @@ namespace G.A.Z.SIOS.Controllers
                 intDB.SaveChanges();
                 evm.Udzial_count += 1;
                 eDB.SaveChanges();
+                PointsDBContext pDB = new PointsDBContext();
+                var pi = pDB.Points.FirstOrDefault(m => m.ID_User == User.Identity.Name);
+                if (pi == null)
+                {
+                    pDB.Points.Add(new PointsViewModels() { ID_User = User.Identity.Name, Points = 5 });
+                    pDB.SaveChanges();
+                }
+                else
+                {
+                    pi.Points += 5;
+                    pDB.SaveChanges();
+                }
                 ViewBag.SuccessMessage = "Dziękujemy za wzięcie udziału w wydarzeniu";
             }
             else
